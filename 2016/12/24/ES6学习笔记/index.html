@@ -23,18 +23,18 @@
 <meta property="og:site_name" content="栾皓琛的个人博客">
 <meta property="og:description" content="ES6笔记">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://zardizumi.github.io/2016/12/24/ES6学习笔记/ES6学习笔记/ES6数组赋值0.png">
-<meta property="og:image" content="https://zardizumi.github.io/2016/12/24/ES6学习笔记/ES6学习笔记/ES6数组赋值1.png">
-<meta property="og:image" content="https://zardizumi.github.io/2016/12/24/ES6学习笔记/ES6学习笔记/rest运算符.png">
-<meta property="og:image" content="https://zardizumi.github.io/2016/12/24/ES6学习笔记/ES6学习笔记/rest运算符1.png">
-<meta property="og:image" content="https://zardizumi.github.io/2016/12/24/ES6学习笔记/ES6学习笔记/字符串模板1.png">
-<meta property="og:image" content="https://zardizumi.github.io/2016/12/24/ES6学习笔记/ES6学习笔记/字符串模板2.png">
-<meta property="og:image" content="https://zardizumi.github.io/2016/12/24/ES6学习笔记/ES6学习笔记/数值.png">
+<meta property="og:image" content="https://zardizumi.github.io/2016/12/24/ES6学习笔记/ES6数组赋值0.png">
+<meta property="og:image" content="https://zardizumi.github.io/2016/12/24/ES6学习笔记/ES6数组赋值1.png">
+<meta property="og:image" content="https://zardizumi.github.io/2016/12/24/ES6学习笔记/rest运算符.png">
+<meta property="og:image" content="https://zardizumi.github.io/2016/12/24/ES6学习笔记/rest运算符1.png">
+<meta property="og:image" content="https://zardizumi.github.io/2016/12/24/ES6学习笔记/字符串模板1.png">
+<meta property="og:image" content="https://zardizumi.github.io/2016/12/24/ES6学习笔记/字符串模板2.png">
+<meta property="og:image" content="https://zardizumi.github.io/2016/12/24/ES6学习笔记/数值.png">
 <meta property="og:updated_time" content="2017-11-23T09:03:36.169Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6学习笔记">
 <meta name="twitter:description" content="ES6笔记">
-<meta name="twitter:image" content="https://zardizumi.github.io/2016/12/24/ES6学习笔记/ES6学习笔记/ES6数组赋值0.png">
+<meta name="twitter:image" content="https://zardizumi.github.io/2016/12/24/ES6学习笔记/ES6数组赋值0.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -106,7 +106,7 @@
 <div class="intrude-less">
     <header id="header" class="inner">
         <a href="/" class="profilepic">
-            <img src="/img/avatar.png" class="animated zoomIn">
+            <img src="/img/avatar.jpg" class="animated zoomIn">
         </a>
         <hgroup>
           <h1 class="header-author"><a href="/">栾皓琛</a></h1>
@@ -240,7 +240,7 @@
     <div class="intrude-less">
         <header id="header" class="inner">
             <a href="/" class="profilepic">
-                <img src="/img/avatar.png" class="animated zoomIn">
+                <img src="/img/avatar.jpg" class="animated zoomIn">
             </a>
             <hgroup>
               <h1 class="header-author"><a href="/" title="回到主页">栾皓琛</a></h1>
@@ -337,13 +337,13 @@
     console.log(arg[4]);
 }
 foo(1,2,3) //1,2,3,undefined</code><br>使用对象扩展运算符传参数,即使参数数量不正确也不会报错,而ES5中则会报错.</p>
-<p><strong> 使用扩展运算符对数组进行赋值 </strong><br>在ES5中如果使用<code>let arr2 = arr1</code> 对数组进行赋值,则是将arr1的内存地址映射给arr2,如果arr1改变,arr2一样会改变.<br>而在ES6中如果使用…对数进行赋值,则只是将arr1的值arr2,等于创建了一个新的arr2数组.<br><img src="ES6学习笔记/ES6数组赋值0.png" alt=""><br><img src="ES6学习笔记/ES6数组赋值1.png" alt=""></p>
-<h3 id="rest运算符-剩余部分-‘…’"><a href="#rest运算符-剩余部分-‘…’" class="headerlink" title="rest运算符(剩余部分) ‘…’"></a>rest运算符(剩余部分) ‘…’</h3><p><strong> rest和扩展运算符都是’…’用法几乎相同,但是rest有剩余的意思,它只会算通过…传入的参数部分,通过直接传入的不会算进去 </strong><br><img src="ES6学习笔记/rest运算符.png" alt=""><br><img src="ES6学习笔记/rest运算符1.png" alt=""></p>
+<p><strong> 使用扩展运算符对数组进行赋值 </strong><br>在ES5中如果使用<code>let arr2 = arr1</code> 对数组进行赋值,则是将arr1的内存地址映射给arr2,如果arr1改变,arr2一样会改变.<br>而在ES6中如果使用…对数进行赋值,则只是将arr1的值arr2,等于创建了一个新的arr2数组.<br><img src="/2016/12/24/ES6学习笔记/ES6数组赋值0.png" alt=""><br><img src="/2016/12/24/ES6学习笔记/ES6数组赋值1.png" alt=""></p>
+<h3 id="rest运算符-剩余部分-‘…’"><a href="#rest运算符-剩余部分-‘…’" class="headerlink" title="rest运算符(剩余部分) ‘…’"></a>rest运算符(剩余部分) ‘…’</h3><p><strong> rest和扩展运算符都是’…’用法几乎相同,但是rest有剩余的意思,它只会算通过…传入的参数部分,通过直接传入的不会算进去 </strong><br><img src="/2016/12/24/ES6学习笔记/rest运算符.png" alt=""><br><img src="/2016/12/24/ES6学习笔记/rest运算符1.png" alt=""></p>
 <h3 id="使用for-of循环打印数组"><a href="#使用for-of循环打印数组" class="headerlink" title="使用for of循环打印数组"></a>使用for of循环打印数组</h3><p>使用for of替换for 循环可以避免在内存中开辟空间来存索引i<br><code>let arr = [1,2,3]; for(val of arr) {console.log(val)//1,2,3}</code></p>
 <h2 id="四-字符串模板"><a href="#四-字符串模板" class="headerlink" title="四.字符串模板"></a>四.字符串模板</h2><p>ES5中使用’+’来拼接字符串,而在<strong> ES6中要使用`${字符串}`和来配合,这就是字符串模板并且可以在里面嵌入html标签 </strong></p>
 <p><strong> 字符串模板也支持运算 </strong></p>
-<p><img src="ES6学习笔记/字符串模板1.png" alt=""><br><strong> 字符串查找 被搜索字符串.includes(要搜索字符串) </strong><br><strong> 查找开头有没有 被搜索.startsWith(要搜索) </strong><br><strong> 结尾有没有被锁搜.endsWith(要搜索) </strong><br><strong> 字符串复制 要被复制.repeat(次数) </strong></p>
-<p><img src="ES6学习笔记/字符串模板2.png" alt=""></p>
+<p><img src="/2016/12/24/ES6学习笔记/字符串模板1.png" alt=""><br><strong> 字符串查找 被搜索字符串.includes(要搜索字符串) </strong><br><strong> 查找开头有没有 被搜索.startsWith(要搜索) </strong><br><strong> 结尾有没有被锁搜.endsWith(要搜索) </strong><br><strong> 字符串复制 要被复制.repeat(次数) </strong></p>
+<p><img src="/2016/12/24/ES6学习笔记/字符串模板2.png" alt=""></p>
 <h2 id="五-数字的操作"><a href="#五-数字的操作" class="headerlink" title="五.数字的操作"></a>五.数字的操作</h2><h3 id="二进制和八进制数"><a href="#二进制和八进制数" class="headerlink" title="二进制和八进制数"></a>二进制和八进制数</h3><p><strong> 二级制Binary </strong><br>声明二进制用 0B开头<br><code>let a = 0B1010101</code></p>
 <p><strong> 声明八进制 </strong></p>
 <p><code>let b = 0o666;</code></p>
@@ -353,7 +353,7 @@ foo(1,2,3) //1,2,3,undefined</code><br>使用对象扩展运算符传参数,即�
 <p><strong> 整型浮点转换 Number.parseInt() NumberparseFloat() </strong></p>
 <h3 id="取值范围"><a href="#取值范围" class="headerlink" title="取值范围"></a>取值范围</h3><p>最大取值是2*53-1次方<br>最小取值是-2*53+1次方</p>
 <p><strong> 最大安全整数,最小安全整数常量 </strong><br>Number.MAX_SAFE_INTEGER<br>Number.MIN_SAFE_INTEGER</p>
-<p><strong> 判断是否是安全整数数值范围 </strong><br>Number.isSafeInteger()<br><img src="ES6学习笔记/数值.png" alt=""></p>
+<p><strong> 判断是否是安全整数数值范围 </strong><br>Number.isSafeInteger()<br><img src="/2016/12/24/ES6学习笔记/数值.png" alt=""></p>
 
       
     </div>
@@ -517,7 +517,7 @@ foo(1,2,3) //1,2,3,undefined</code><br>使用对象扩展运算符传参数,即�
                 $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
             }
             else {
-                var backgroundnum = 5;
+                var backgroundnum = 6;
                 var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
                 $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
             }
