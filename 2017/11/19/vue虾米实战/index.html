@@ -15,11 +15,13 @@
 
 
 
+<meta name="description" content="一个高仿虾米网页端! 项目地址:http://www.zardluan.cn/xiami/">
 <meta name="keywords" content="Vue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue虾米实战">
 <meta property="og:url" content="https://zardizumi.github.io/2017/11/19/vue虾米实战/index.html">
 <meta property="og:site_name" content="栾皓琛的个人博客">
+<meta property="og:description" content="一个高仿虾米网页端! 项目地址:http://www.zardluan.cn/xiami/">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://zardizumi.github.io/2017/11/19/vue虾米实战/logo.png">
 <meta property="og:image" content="https://zardizumi.github.io/2017/11/19/vue虾米实战/效果图.PNG">
@@ -36,9 +38,10 @@
 <meta property="og:image" content="https://zardizumi.github.io/2017/11/19/vue虾米实战/vuex.png">
 <meta property="og:image" content="https://zardizumi.github.io/2017/11/19/vue虾米实战/miniPlay.png">
 <meta property="og:image" content="https://zardizumi.github.io/2017/11/19/vue虾米实战/newFoo.png">
-<meta property="og:updated_time" content="2017-11-23T06:23:29.349Z">
+<meta property="og:updated_time" content="2017-11-24T13:31:37.224Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue虾米实战">
+<meta name="twitter:description" content="一个高仿虾米网页端! 项目地址:http://www.zardluan.cn/xiami/">
 <meta name="twitter:image" content="https://zardizumi.github.io/2017/11/19/vue虾米实战/logo.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -322,7 +325,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><img src="/2017/11/19/vue虾米实战/logo.png" alt=""><br><a id="more"></a></p>
+        <p><img src="/2017/11/19/vue虾米实战/logo.png" alt=""><br><strong> 一个高仿虾米网页端! </strong><br>项目地址:<a href="http://www.zardluan.cn/xiami/" target="_blank" rel="noopener">http://www.zardluan.cn/xiami/</a><br><a id="more"></a></p>
 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>自学了vue大概一个星期,突发奇想,想模仿一个世面上的的SPA试试看,找来找去,发现虾米音乐的这个不算太难,所以准备动手试试.<br>使用技术:webpack,vue-cli,vue-router,可能会用到vuex,因为是模仿,可能不需要维护那么多状态.<br><strong> 效果图如下 </strong><br>其中紫色的是根组件,红色的公用的顶部和tab栏.绿色的是各自的路由,其中新歌页面是默认路由.<br><img src="/2017/11/19/vue虾米实战/效果图.PNG" alt=""></p>
 <h3 id="一-页面布局"><a href="#一-页面布局" class="headerlink" title="一.页面布局"></a>一.页面布局</h3><p>整体页面固定的部分是头部的tab栏,和底部的mini播放器,之前没有考虑到底部mini播放器要在别的页面公用,本来应该做成组件的.结果我直接将其新歌页面的模板的一部分了.</p>
 <h3 id="二-根组件"><a href="#二-根组件" class="headerlink" title="二.根组件"></a>二.根组件</h3><p>根组件只需要写顶部和tab栏即可,(本身mini播放器也应该作为组件插在根组件里,结果忘掉了…).</p>
@@ -343,6 +346,7 @@
 <p>5.在mini播放器组件中.引入store.又因为要使用多个状态,所以引入{mapState}</p>
 <p>6.我们在组件被挂载后给用newmusicData状态的第一个元素给newactiveMusic赋值.达成打开即播放的功能.<br><img src="/2017/11/19/vue虾米实战/miniPlay.png" alt=""></p>
 <p>7.在新歌页面,修改歌曲的点击事件,将点击歌曲的属性赋值给newactiveMusic.<br><img src="/2017/11/19/vue虾米实战/newFoo.png" alt=""></p>
+<p>未完待续….</p>
 
       
     </div>
@@ -354,7 +358,7 @@
         <p><span>本文标题:</span><a href="/2017/11/19/vue虾米实战/">vue虾米实战</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">栾皓琛</a></p>
         <p><span>发布时间:</span>2017-11-19, 20:10:33</p>
-        <p><span>最后更新:</span>2017-11-23, 14:23:29</p>
+        <p><span>最后更新:</span>2017-11-24, 21:31:37</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/11/19/vue虾米实战/" title="vue虾米实战">https://zardizumi.github.io/2017/11/19/vue虾米实战/</a>
             <span class="copy-path" data-clipboard-text="原文: https://zardizumi.github.io/2017/11/19/vue虾米实战/　　作者: 栾皓琛" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
