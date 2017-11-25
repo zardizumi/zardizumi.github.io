@@ -195,7 +195,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a></li></ul>
                     </div>
                 </section>
                 
@@ -367,9 +367,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <a id="more"></a>
-<h2 id="fastclick-js"><a href="#fastclick-js" class="headerlink" title="fastclick.js"></a>fastclick.js</h2><p><br>    可以解决移动端的点击事件的<br>  点透问题,并且同时适用于PC端和移动端.<br></p><br><p><br>    使用方法<br></p><br>1. 在页面中引入fastclick.js<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">'application/javascript'</span> <span class="attr">src</span>=<span class="string">'/path/to/fastclick.js'</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure><br><br>2. 将FastClick绑定给document.body,这样页面中的所有元素就都可以使用fastclick封装的click方法<br><br><strong>未使用jquery的情况下</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="string">'addEventListener'</span> <span class="keyword">in</span> <span class="built_in">document</span>) &#123;</span><br><span class="line">	<span class="built_in">document</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		FastClick.attach(<span class="built_in">document</span>.body);</span><br><span class="line">	&#125;, <span class="literal">false</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><br><strong>如果使用了jquery</strong><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(function() &#123;</span><br><span class="line">	FastClick.attach(document.body);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><br><br>3.为DOM元素绑定click事件即可<br><br><br><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">example.addEventListener(&quot;click&quot;,function()&#123;</span><br><span class="line">........</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><br><br>4.这样PC端和移动端就都可以触发点击事件,并且不会产生点透<br><br><h2>iScroll</h2><br>可以实现移动端滚动效果<br><br><b>使用方法</b><br><br><h4>1.页面结构</h4><br><pre><br>&lt; div id=”wrapper”&gt;<br>    &lt; ul&gt;<br>        &lt; li&gt;…&lt; /li&gt;<br>        &lt; li&gt;…&lt; /li&gt;<br>        …<br>    &lt; /ul&gt;<br>&lt; /div&gt;<br></pre><br><h4>2.初始化</h4><br><br><pre><br>var myScroll = new IScroll(‘#wrapper’);<br>或<br>var wrapper = document.getElementById(‘wrapper’);<br>var myScroll = new IScroll(wrapper);<br>或<br>var myScroll = new IScroll(‘.wrapper’);<br></pre><br><br><h4>3.可以为其传入参数</h4><br><br><br><pre><br>var myScroll = new IScroll(‘.wrapper’,{mouseWheel: true,scrollbars: true});<br></pre><br><br>开始鼠标滚轮滚动和滚动条,因为滚动条是默认相对body 定位的,所以如果<strong>想让滚动条出现在父元素上,则要给父元素设置position:relative</strong><br><br><h2>swipe</h2><br><h4>1.页面结构</h4><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;div .id=&apos;slider&apos; class=&apos;swipe&apos;&gt;</span><br><span class="line">  &lt;div class=&apos;swipe-wrap&apos;&gt;</span><br><span class="line">    &lt;div&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div&gt;&lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure><br><br><h4>2.css样式</h4><br><pre><br>.swipe {<br>  overflow: hidden;<br>  visibility: hidden;<br>  position: relative;<br>}<br>.swipe-wrap {<br>  overflow: hidden;<br>  position: relative;<br>}<br>.swipe-wrap &gt; div {<br>  float:left;<br>  width:100%;<br>  position: relative;<br>}<br></pre><br><h4>3.初始化</h4><br><pre><br>    window.mySwipe = Swipe(document.getElementById(‘slider’));<br></pre><br><h4>4.一些参数</h4><br><pre><br>    window.mySwipe = new Swipe(document.getElementById(‘slider’), {<br>  startSlide: 2,<br>  speed: 400,<br>  auto: 3000,<br>  continuous: true,<br>  disableScroll: false,<br>  stopPropagation: false,<br>  callback: function(index, elem) {},<br>  transitionEnd: function(index, elem) {}<br>});<br></pre><br>  <h4>5.API</h4><br><p><br>prev() slide to prev<br><br><br><br>next() slide to next<br><br><br><br>getPos() returns current slide index position<br><br><br><br>getNumSlides() returns the total amount of slides<br><br><br><br>slide(index, duration) slide to set index position (duration: speed of transition in milliseconds)<br><br><br><br></p>
-
+              <p>插件<br></p>
+          
       
     </div>
     
@@ -378,6 +377,14 @@
       
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/插件/">插件</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2017/07/25/四款移动插件用法/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -482,31 +489,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <a id="more"></a>
-<h1 id="一-基础"><a href="#一-基础" class="headerlink" title="一.基础"></a>一.基础</h1><p>1.在任何地方及时没有网络也可以通过127.0.0.1 来访问本机<br><br>2.商业服务器,相比个人电脑内存大,cpu好,硬盘固态<br><br>3.B&amp;S架构<br><br>4.C&amp;S架构<br><br>5.B&amp;S比C&amp;S架构轻量很多<br></p>
-<p>#二.数据库#<br>php可以从数据库取出数据,然后动态生成html标签将数据包起来插入页面.<br><br>1.header()函数可以用于设置php页面的编码格式<br></p>
-<pre><code>header(&quot;content-type:text/html;charset=utf-8&quot;);
-</code></pre><p>2.echo 用于输出内容<br><br>3.php代码要包裹在&lt;?php php代码 ?&gt;中<br><br>4.php中声明变量用$variable = ….,基本类型 数值.字符串,布尔,小数,除了定义方式和js不一样,其他都是一样<br><br>5.php中的逻辑语句比如if else switch while  do while 与js 中的一样<br></p>
-<ol>
-<li><strong><span style="color:red;">服务器解析一个php页面的过程</span></strong><br></li>
-<li>不要漏每句后面的分号,不能省略<br><strong><p style="color:green">8.php必须写在服务器端<br><br>9.php中拼接字符串用 “·” <br><br>10.php中定义一个数组使用array()方法,将数组项直接作为参数传进去,可以通过[下标]的形式打印数组项<br></p></strong><br>`header(“content-type:text/html;charset=utf-8”);</li>
-</ol>
-<p>$food = array(“鸡蛋”,”西红柿”);</p>
-<p>for($i = 0;$i&lt;count($food);$i++ ) {</p>
-<p>echo $food[$i].”—“;</p>
-<p>}`<br></p>
-<p>10.直接打印出复杂数据类型,使用print_r()方法<br><br>11.遍历数组 使用count(array)得到数组的长度<br><br>12.定义一个对象数组 遍历对象的属性 使用array(key=&gt;value,……)  遍历使用php foreach()<br><br><code>$person = array(&quot;name&quot;=&gt;&quot;吴京&quot;,&quot;move&quot;=&gt;&quot;战狼&quot;);
-    foreach ($person as $key =&gt; $value) {
-        echo $person[$key];
-    }</code><br>13.php中的二维数组<br>`&lt;?php<br>    header(“content-type:text/html;charset=utf-8”);</p>
-<pre><code>$starArr = array(
-
-array(&quot;name&quot;=&gt;&quot;刘德华&quot;,&quot;move&quot;=&gt;&quot;无间道&quot;,&quot;friend&quot;=&gt;&quot;曾志伟&quot;),
-array(&quot;name&quot;=&gt;&quot;吴京&quot;,&quot;move&quot;=&gt;&quot;战狼&quot;,&quot;friend&quot;=&gt;&quot;张翰&quot;),
-array(&quot;name&quot;=&gt;&quot;黄渤&quot;,&quot;move&quot;=&gt;&quot;疯狂的石头&quot;,&quot;friend&quot;=&gt;&quot;徐峥&quot;),
-);
-</code></pre><p>?&gt;`</p>
-
+              <p>PHP笔记<br></p>
+          
       
     </div>
     
@@ -515,6 +499,14 @@ array(&quot;name&quot;=&gt;&quot;黄渤&quot;,&quot;move&quot;=&gt;&quot;疯狂�
       
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2017/05/28/two-md/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -561,12 +553,8 @@ array(&quot;name&quot;=&gt;&quot;黄渤&quot;,&quot;move&quot;=&gt;&quot;疯狂�
     <div class="article-entry" itemprop="articleBody">
       
           
-        <a id="more"></a>
-<h1 id="vue-resourec"><a href="#vue-resourec" class="headerlink" title="vue-resourec"></a>vue-resourec</h1><p>vue-resource是vue自带的http插件，用于与后端进行对接。<br>可以进行get，post，以及jsonp的跨域请求。</p>
-<h2 id="安装vue-resource"><a href="#安装vue-resource" class="headerlink" title="安装vue-resource"></a>安装vue-resource</h2><p><strong> 使用npm安装 </strong></p>
-<p><code>cnpm install vue-resource --save</code></p>
-<p><strong> 在main.js中引入 </strong><br><code>import vueResource from &#39;vue-resource&#39; ;Vue.use(vueResource)</code></p>
-
+              <p>VueResource<br></p>
+          
       
     </div>
     
@@ -575,6 +563,14 @@ array(&quot;name&quot;=&gt;&quot;黄渤&quot;,&quot;move&quot;=&gt;&quot;疯狂�
       
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2017/02/10/VueResource踩坑记/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
