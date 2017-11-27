@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="PHP笔记">
-<meta name="keywords" content="php">
+<meta name="description" content="记录我从零开始自学vue的过程,以及一些心得体会">
+<meta name="keywords" content="vue">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PHP">
-<meta property="og:url" content="https://zardizumi.github.io/2017/05/28/two-md/index.html">
+<meta property="og:title" content="从零开始学习Vue">
+<meta property="og:url" content="https://zardizumi.github.io/2017/11/10/Vue学习笔记/index.html">
 <meta property="og:site_name" content="栾皓琛的个人博客">
-<meta property="og:description" content="PHP笔记">
+<meta property="og:description" content="记录我从零开始自学vue的过程,以及一些心得体会">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-25T09:05:41.145Z">
+<meta property="og:updated_time" content="2017-11-27T02:11:45.952Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PHP">
-<meta name="twitter:description" content="PHP笔记">
+<meta name="twitter:title" content="从零开始学习Vue">
+<meta name="twitter:description" content="记录我从零开始自学vue的过程,以及一些心得体会">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>PHP | 栾皓琛的个人博客</title>
+<title>从零开始学习Vue | 栾皓琛的个人博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -269,11 +269,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-two-md" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Vue学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/05/28/two-md/" class="article-date">
-      <time datetime="2017-05-28T12:10:33.000Z" itemprop="datePublished">2017-05-28</time>
+      <a href="/2017/11/10/Vue学习笔记/" class="article-date">
+      <time datetime="2017-11-10T01:17:21.000Z" itemprop="datePublished">2017-11-10</time>
 </a>
 
 
@@ -288,7 +288,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      PHP
+      从零开始学习Vue
     </h1>
   
 
@@ -299,7 +299,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -309,31 +309,42 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>PHP笔记<br><a id="more"></a></p>
-<h1 id="一-基础"><a href="#一-基础" class="headerlink" title="一.基础"></a>一.基础</h1><p>1.在任何地方及时没有网络也可以通过127.0.0.1 来访问本机<br><br>2.商业服务器,相比个人电脑内存大,cpu好,硬盘固态<br><br>3.B&amp;S架构<br><br>4.C&amp;S架构<br><br>5.B&amp;S比C&amp;S架构轻量很多<br></p>
-<p>#二.数据库#<br>php可以从数据库取出数据,然后动态生成html标签将数据包起来插入页面.<br><br>1.header()函数可以用于设置php页面的编码格式<br></p>
-<pre><code>header(&quot;content-type:text/html;charset=utf-8&quot;);
-</code></pre><p>2.echo 用于输出内容<br><br>3.php代码要包裹在&lt;?php php代码 ?&gt;中<br><br>4.php中声明变量用$variable = ….,基本类型 数值.字符串,布尔,小数,除了定义方式和js不一样,其他都是一样<br><br>5.php中的逻辑语句比如if else switch while  do while 与js 中的一样<br></p>
-<ol>
-<li><strong><span style="color:red;">服务器解析一个php页面的过程</span></strong><br></li>
-<li>不要漏每句后面的分号,不能省略<br><strong><p style="color:green">8.php必须写在服务器端<br><br>9.php中拼接字符串用 “·” <br><br>10.php中定义一个数组使用array()方法,将数组项直接作为参数传进去,可以通过[下标]的形式打印数组项<br></p></strong><br>`header(“content-type:text/html;charset=utf-8”);</li>
-</ol>
-<p>$food = array(“鸡蛋”,”西红柿”);</p>
-<p>for($i = 0;$i&lt;count($food);$i++ ) {</p>
-<p>echo $food[$i].”—“;</p>
-<p>}`<br></p>
-<p>10.直接打印出复杂数据类型,使用print_r()方法<br><br>11.遍历数组 使用count(array)得到数组的长度<br><br>12.定义一个对象数组 遍历对象的属性 使用array(key=&gt;value,……)  遍历使用php foreach()<br><br><code>$person = array(&quot;name&quot;=&gt;&quot;吴京&quot;,&quot;move&quot;=&gt;&quot;战狼&quot;);
-    foreach ($person as $key =&gt; $value) {
-        echo $person[$key];
-    }</code><br>13.php中的二维数组<br>`&lt;?php<br>    header(“content-type:text/html;charset=utf-8”);</p>
-<pre><code>$starArr = array(
-
-array(&quot;name&quot;=&gt;&quot;刘德华&quot;,&quot;move&quot;=&gt;&quot;无间道&quot;,&quot;friend&quot;=&gt;&quot;曾志伟&quot;),
-array(&quot;name&quot;=&gt;&quot;吴京&quot;,&quot;move&quot;=&gt;&quot;战狼&quot;,&quot;friend&quot;=&gt;&quot;张翰&quot;),
-array(&quot;name&quot;=&gt;&quot;黄渤&quot;,&quot;move&quot;=&gt;&quot;疯狂的石头&quot;,&quot;friend&quot;=&gt;&quot;徐峥&quot;),
-);
-</code></pre><p>?&gt;`</p>
-
+        <p>记录我从零开始自学vue的过程,以及一些心得体会<br><a id="more"></a></p>
+<h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><h2 id="安装live-server"><a href="#安装live-server" class="headerlink" title="安装live-server"></a>安装live-server</h2><p>使用npm全局安装live-server,live-server是基于node搭建的简易服务器,可以实现热刷新,即我们对代码做的更改可以实时反映在页面上,而不需要刷新页面.<br><code>npm install live-server -g</code><br><strong> 启动 </strong><br>在项目根目录打开cmd,输入live-server –port=1717 即可在当前目录启动live-server,如果不加端口号,默认使用8080端口.</p>
+<h3 id="下载引入vue-js"><a href="#下载引入vue-js" class="headerlink" title="下载引入vue.js"></a>下载引入vue.js</h3><p>在网上下载vue.js,在页面头部引入vue.js</p>
+<h3 id="Hello-Vue"><a href="#Hello-Vue" class="headerlink" title="Hello Vue!"></a>Hello Vue!</h3><p><strong> 新建html文件,使用vue.js页面上打印hello Vue </strong><br>    以下代码创建了一个Vue实例,使用<strong> 双大括号的形式 </strong> 将Vue实例构造器中的数据插入到DOM中.在控制台中改变<strong> app.message </strong> 的值可以实时改变显示的值.</p>
+<pre><code>&lt;body&gt;
+    &lt;div id=&apos;app&apos;&gt;
+        &lt;h1&gt;{{message}}&lt;/h1&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;script&gt;
+    var app = new Vue({
+        el:&apos;#app&apos;,
+        data:{
+            message:&apos;hello Vue!&apos;
+        }
+    })
+&lt;/script&gt;
+</code></pre><h2 id="内部指令"><a href="#内部指令" class="headerlink" title="内部指令"></a>内部指令</h2><p> <strong> vue的内部指令都以v-开头 </strong></p>
+<h4 id="v-if-amp-v-else和v-show"><a href="#v-if-amp-v-else和v-show" class="headerlink" title="v-if&amp;v-else和v-show"></a>v-if&amp;v-else和v-show</h4><p><strong> v-if和v-else作用是根据判断条件决定是否渲染元素</strong><br>我们为一个按钮添加事件,切换app.isShow的值,达到切换显示不同文字的效果,<strong style="color:red">注意,v-if指令可以单独存在,但是v-else必须和v-if成对存在</strong><br><strong style="color:red">v-show指令效果与v-if&amp;v-else一样,唯一区别在于v-if和v-else是通过判断条件来决定是否加载元素,而v-show则是通过改变元素的display来切换元素的显示与隐藏.</strong></p>
+<pre><code>&lt;body&gt;
+    &lt;div id=&quot;app&quot;&gt;
+        &lt;h1 v-if=&apos;isShow&apos;&gt;isShow为true,你才能看见我&lt;/h1&gt;
+        &lt;h1 v-else=&apos;isShow&apos;&gt;isShow为false你才能看见我&lt;/h1&gt;
+    &lt;/div&gt;
+    &lt;button id=&apos;btn&apos;&gt;toggle&lt;/button&gt;
+&lt;/body&gt;
+&lt;script&gt;
+    var app = new Vue({
+        el:&apos;#app&apos;,
+        isShow:true
+    })
+    document.getelementById(&apos;btn&apos;). addEventListener(&apos;click&apos;,function() {
+        app.isShow = !app.isShow;
+    })
+&lt;/script&gt;
+</code></pre>
       
     </div>
     
@@ -341,13 +352,13 @@ array(&quot;name&quot;=&gt;&quot;黄渤&quot;,&quot;move&quot;=&gt;&quot;疯狂�
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/05/28/two-md/">PHP</a></p>
+        <p><span>本文标题:</span><a href="/2017/11/10/Vue学习笔记/">从零开始学习Vue</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">栾皓琛</a></p>
-        <p><span>发布时间:</span>2017-05-28, 20:10:33</p>
-        <p><span>最后更新:</span>2017-11-25, 17:05:41</p>
+        <p><span>发布时间:</span>2017-11-10, 09:17:21</p>
+        <p><span>最后更新:</span>2017-11-27, 10:11:45</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/05/28/two-md/" title="PHP">https://zardizumi.github.io/2017/05/28/two-md/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://zardizumi.github.io/2017/05/28/two-md/　　作者: 栾皓琛" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/11/10/Vue学习笔记/" title="从零开始学习Vue">https://zardizumi.github.io/2017/11/10/Vue学习笔记/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://zardizumi.github.io/2017/11/10/Vue学习笔记/　　作者: 栾皓琛" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -360,15 +371,15 @@ array(&quot;name&quot;=&gt;&quot;黄渤&quot;,&quot;move&quot;=&gt;&quot;疯狂�
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/06/02/一些总结的小坑/">
-                    一些总结的小坑
+                <a href="/2017/11/19/vue虾米实战/">
+                    vue虾米实战
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/02/10/VueResource踩坑记/">
-                    VueResource踩坑记
+                <a href="/2017/07/25/四款移动插件用法/">
+                    四款移动开发中的插件的用法
                 </a>
             </div>
         
@@ -380,7 +391,7 @@ array(&quot;name&quot;=&gt;&quot;黄渤&quot;,&quot;move&quot;=&gt;&quot;疯狂�
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一-基础"><span class="toc-number">1.</span> <span class="toc-text">一.基础</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前期准备"><span class="toc-number">1.</span> <span class="toc-text">前期准备</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装live-server"><span class="toc-number">1.1.</span> <span class="toc-text">安装live-server</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载引入vue-js"><span class="toc-number">1.1.1.</span> <span class="toc-text">下载引入vue.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hello-Vue"><span class="toc-number">1.1.2.</span> <span class="toc-text">Hello Vue!</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内部指令"><span class="toc-number">1.2.</span> <span class="toc-text">内部指令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#v-if-amp-v-else和v-show"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">v-if&v-else和v-show</span></a></li></ol></li></ol></li></ol></li></ol>
         
     </div>
     <style>
@@ -416,7 +427,7 @@ array(&quot;name&quot;=&gt;&quot;黄渤&quot;,&quot;move&quot;=&gt;&quot;疯狂�
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"PHP　| 栾皓琛的个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"从零开始学习Vue　| 栾皓琛的个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -450,7 +461,7 @@ array(&quot;name&quot;=&gt;&quot;黄渤&quot;,&quot;move&quot;=&gt;&quot;疯狂�
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/06/02/一些总结的小坑/" title="上一篇: 一些总结的小坑">
+            <a href="/2017/11/19/vue虾米实战/" title="上一篇: vue虾米实战">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -458,7 +469,7 @@ array(&quot;name&quot;=&gt;&quot;黄渤&quot;,&quot;move&quot;=&gt;&quot;疯狂�
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/02/10/VueResource踩坑记/" title="下一篇: VueResource踩坑记">
+            <a href="/2017/07/25/四款移动插件用法/" title="下一篇: 四款移动开发中的插件的用法">
                 <i class="fa fa-angle-right"></i>
             </a>
         
