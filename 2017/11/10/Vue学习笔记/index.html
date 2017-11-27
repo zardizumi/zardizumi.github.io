@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="栾皓琛的个人博客">
 <meta property="og:description" content="记录我从零开始自学vue的过程,以及一些心得体会">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-27T07:46:26.367Z">
+<meta property="og:updated_time" content="2017-11-27T08:47:25.436Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从零开始学习Vue">
 <meta name="twitter:description" content="记录我从零开始自学vue的过程,以及一些心得体会">
@@ -316,78 +316,15 @@
 <h2 id="Hello-Vue"><a href="#Hello-Vue" class="headerlink" title="Hello Vue!"></a>Hello Vue!</h2><p><strong> 新建html文件,使用vue.js页面上打印hello Vue </strong><br>    以下代码创建了一个Vue实例,使用<strong> 双大括号的形式 </strong> 将Vue实例构造器中的数据插入到DOM中.在控制台中改变<strong> app.message </strong> 的值可以实时改变显示的值.<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'app'</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123;message&#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">	<span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">		el:<span class="string">'#app'</span>,</span><br><span class="line">		data:&#123;</span><br><span class="line">			message:<span class="string">'hello Vue!'</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
 <h1 id="内部指令"><a href="#内部指令" class="headerlink" title="内部指令"></a>内部指令</h1><p> <strong> vue的内部指令都以v-开头 </strong></p>
-<h2 id="v-if-amp-v-else-if-amp-v-else和v-show"><a href="#v-if-amp-v-else-if-amp-v-else和v-show" class="headerlink" title="v-if&amp;v-else-if&amp;v-else和v-show"></a>v-if&amp;v-else-if&amp;v-else和v-show</h2><p><strong> v-if,v-else-if和v-else作用是根据判断条件决定是否渲染元素</strong><br>我们为一个按钮添加事件,切换app.isShow的值,达到切换显示不同文字的效果,<strong style="color:red">注意,v-if指令可以单独存在,但是v-else必须和v-if成对存在</strong><br><strong style="color:red">v-show指令效果与v-if&amp;v-else一样,唯一区别在于v-if和v-else是通过判断条件来决定是否加载元素,而v-show则是通过改变元素的display来切换元素的显示与隐藏.</strong></p>
-<pre><code>&lt;body&gt;
-    &lt;div id=&quot;app&quot;&gt;
-        &lt;h1 v-if=&apos;isShow&apos;&gt;isShow为true,你才能看见我&lt;/h1&gt;
-        &lt;h1 v-else=&apos;isShow&apos;&gt;isShow为false你才能看见我&lt;/h1&gt;
-    &lt;/div&gt;
-    &lt;button id=&apos;btn&apos;&gt;toggle&lt;/button&gt;
-&lt;/body&gt;
-&lt;script&gt;
-    var app = new Vue({
-        el:&apos;#app&apos;,
-        isShow:true
-    })
-    document.getelementById(&apos;btn&apos;). addEventListener(&apos;click&apos;,function() {
-        app.isShow = !app.isShow;
-    })
-&lt;/script&gt;
-</code></pre><h2 id="v-for"><a href="#v-for" class="headerlink" title="v-for"></a>v-for</h2><p><strong> v-for用于基于数据多次渲染DOM元素或者模板,可以根据数据的变化自动渲染元素,特定语法 ‘val in expression’,值其中val需要通过双大括号的形式插入进去</strong></p>
-<pre><code>&lt;body&gt;
-    &lt;div id=&quot;app&quot;&gt;
-        &lt;ul&gt;
-            &lt;li v-for=&apos;val in str&apos;&gt;{{val}}&lt;/li&gt;
-            &lt;li v-for=&apos;val in number&apos;&gt;{{val}}&lt;/li&gt;
-            &lt;li v-for=&apos;val in arr&apos;&gt;{{val}}&lt;/li&gt;
-            &lt;li v-for=&apos;val in obj&apos;&gt;
-                {{val.name}}----{{val.age}}---{{val.gender}}
-            &lt;/li&gt;
-        &lt;/ul&gt;
-&lt;/div&gt;
-&lt;/body&gt;
-&lt;script&gt;
-    var app = new Vue({
-    el:&apos;#app&apos;,
-    data:{
-        str:&quot;abcde&quot;,
-        number:10,//从1渲染到10,,
-        arr:[1,2,3,4,5],
-        obj:[
-            {
-                name:&apos;wade&apos;,
-                age:&apos;20&apos;,
-                gender:&apos;man&apos;
-            }
-        ]
-    }
-})
-&lt;/script&gt;
-</code></pre><h3 id="使用计算属性对排序后的数组进行遍历"><a href="#使用计算属性对排序后的数组进行遍历" class="headerlink" title="使用计算属性对排序后的数组进行遍历"></a>使用计算属性对排序后的数组进行遍历</h3><p><strong> 如果想对数据进行排序之后再渲染出来,就需要使用Vue实例computed属性.由于vue有数据保护机制,所以在computed中操作的数据必须为他重新命名. </strong></p>
-<pre><code>&lt;body&gt;
-    &lt;div id=&quot;app&quot;&gt;
-        &lt;ul&gt;
-            &lt;li v-for=&apos;val in newArr&apos;&gt;{{val}}&lt;/li&gt;
-        &lt;/ul&gt;
-    &lt;/div&gt;
-&lt;/body&gt;
-&lt;script&gt;
-    var app = new Vue({
-        el: &apos;#app&apos;,
-        data: {
-            arr: [1, 4, 5, 3, 2],
-        },
-        computed: {
-            newArr: function() {
-                return this.arr.sort((a, b) =&gt; a - b)
-            }
-        }
-    })
-    function sortNumber(a, b) {
-        return a - b;
-    }
-&lt;/script&gt;
-</code></pre>
+<h2 id="v-if-amp-v-else-if-amp-v-else和v-show"><a href="#v-if-amp-v-else-if-amp-v-else和v-show" class="headerlink" title="v-if&amp;v-else-if&amp;v-else和v-show"></a>v-if&amp;v-else-if&amp;v-else和v-show</h2><p><strong> v-if,v-else-if和v-else作用是根据判断条件决定是否渲染元素</strong><br>我们为一个按钮添加事件,切换app.isShow的值,达到切换显示不同文字的效果,<strong style="color:red">注意,v-if指令可以单独存在,但是v-else必须和v-if成对存在</strong><br><strong style="color:red">v-show指令效果与v-if&amp;v-else一样,唯一区别在于v-if和v-else是通过判断条件来决定是否加载元素,而v-show则是通过改变元素的display来切换元素的显示与隐藏.</strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">h1</span> <span class="attr">v-if</span>=<span class="string">'isShow'</span>&gt;</span>isShow为true,你才能看见我<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">h1</span> <span class="attr">v-else</span>=<span class="string">'isShow'</span>&gt;</span>isShow为false你才能看见我<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">'btn'</span>&gt;</span>toggle<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">	<span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">		el:<span class="string">'#app'</span>,</span><br><span class="line">		isShow:<span class="literal">true</span></span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="built_in">document</span>.getelementById(<span class="string">'btn'</span>). addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		app.isShow = !app.isShow;</span><br><span class="line">	&#125;)</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="v-for"><a href="#v-for" class="headerlink" title="v-for"></a>v-for</h2><p><strong> v-for用于基于数据多次渲染DOM元素或者模板,可以根据数据的变化自动渲染元素,特定语法 ‘val in expression’,值其中val需要通过双大括号的形式插入进去</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">'val in str'</span>&gt;</span>&#123;&#123;val&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">'val in number'</span>&gt;</span>&#123;&#123;val&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">'val in arr'</span>&gt;</span>&#123;&#123;val&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">'val in obj'</span>&gt;</span></span><br><span class="line">				&#123;&#123;val.name&#125;&#125;----&#123;&#123;val.age&#125;&#125;---&#123;&#123;val.gender&#125;&#125;</span><br><span class="line">			<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">	<span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">	el:<span class="string">'#app'</span>,</span><br><span class="line">	data:&#123;</span><br><span class="line">		str:<span class="string">"abcde"</span>,</span><br><span class="line">		number:<span class="number">10</span>,<span class="comment">//从1渲染到10,,</span></span><br><span class="line">		arr:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],</span><br><span class="line">		obj:[</span><br><span class="line">			&#123;</span><br><span class="line">				name:<span class="string">'wade'</span>,</span><br><span class="line">				age:<span class="string">'20'</span>,</span><br><span class="line">				gender:<span class="string">'man'</span></span><br><span class="line">			&#125;</span><br><span class="line">		]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="使用计算属性对排序后的数组进行遍历"><a href="#使用计算属性对排序后的数组进行遍历" class="headerlink" title="使用计算属性对排序后的数组进行遍历"></a>使用计算属性对排序后的数组进行遍历</h3><p><strong> 如果想对数据进行排序之后再渲染出来,就需要使用Vue实例computed属性.由于vue有数据保护机制,所以在computed中操作的数据必须为他重新命名. </strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">'val in newArr'</span>&gt;</span>&#123;&#123;val&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">	<span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    	el: <span class="string">'#app'</span>,</span><br><span class="line">    	data: &#123;</span><br><span class="line">        	arr: [<span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">2</span>],</span><br><span class="line">    	&#125;,</span><br><span class="line">    	computed: &#123;</span><br><span class="line">        	newArr: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            	<span class="keyword">return</span> <span class="keyword">this</span>.arr.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a - b)</span><br><span class="line">        	&#125;</span><br><span class="line">    	&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">sortNumber</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">	    <span class="keyword">return</span> a - b;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -398,7 +335,7 @@
         <p><span>本文标题:</span><a href="/2017/11/10/Vue学习笔记/">从零开始学习Vue</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">栾皓琛</a></p>
         <p><span>发布时间:</span>2017-11-10, 09:17:21</p>
-        <p><span>最后更新:</span>2017-11-27, 15:46:26</p>
+        <p><span>最后更新:</span>2017-11-27, 16:47:25</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/11/10/Vue学习笔记/" title="从零开始学习Vue">https://zardizumi.github.io/2017/11/10/Vue学习笔记/</a>
             <span class="copy-path" data-clipboard-text="原文: https://zardizumi.github.io/2017/11/10/Vue学习笔记/　　作者: 栾皓琛" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
