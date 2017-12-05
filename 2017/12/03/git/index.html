@@ -15,17 +15,22 @@
 
 
 
-<meta name="description" content="nrmnrm是一个npm包,用于切换npm下载仓库,可以通过npm install -g nrm来安装. 使用方法,nrm ls 显示可以切换的npm仓库,包括淘宝镜像等等.        nrm use &amp;#39;名称&amp;#39;  使用哪个仓库">
+<meta name="description" content="Git入门 1.在一个文件夹中打开git bash使用git init命令 初始化一个项目仓库,会生成一个.git文件夹,默认隐藏  2.直接在这个夹中写代码  Git设置用户信息设置用户信息后,备份之后会存储备份者信息1234//设置用户名$git config --global user.name &amp;apo">
+<meta name="keywords" content="git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一些总结的小坑">
-<meta property="og:url" content="https://zardizumi.github.io/2017/06/02/一些总结的小坑/index.html">
+<meta property="og:title" content="git">
+<meta property="og:url" content="https://zardizumi.github.io/2017/12/03/git/index.html">
 <meta property="og:site_name" content="栾皓琛的个人博客">
-<meta property="og:description" content="nrmnrm是一个npm包,用于切换npm下载仓库,可以通过npm install -g nrm来安装. 使用方法,nrm ls 显示可以切换的npm仓库,包括淘宝镜像等等.        nrm use &amp;#39;名称&amp;#39;  使用哪个仓库">
+<meta property="og:description" content="Git入门 1.在一个文件夹中打开git bash使用git init命令 初始化一个项目仓库,会生成一个.git文件夹,默认隐藏  2.直接在这个夹中写代码  Git设置用户信息设置用户信息后,备份之后会存储备份者信息1234//设置用户名$git config --global user.name &amp;apos;&amp;apos;//设置邮箱$git config --global user.emai">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-24T16:53:34.959Z">
+<meta property="og:image" content="https://zardizumi.github.io/2017/12/03/git/reflog.png">
+<meta property="og:image" content="https://zardizumi.github.io/2017/12/03/git/切换版本号.png">
+<meta property="og:image" content="https://zardizumi.github.io/2017/12/03/git/矛盾处理.png">
+<meta property="og:updated_time" content="2017-12-05T01:23:17.666Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一些总结的小坑">
-<meta name="twitter:description" content="nrmnrm是一个npm包,用于切换npm下载仓库,可以通过npm install -g nrm来安装. 使用方法,nrm ls 显示可以切换的npm仓库,包括淘宝镜像等等.        nrm use &amp;#39;名称&amp;#39;  使用哪个仓库">
+<meta name="twitter:title" content="git">
+<meta name="twitter:description" content="Git入门 1.在一个文件夹中打开git bash使用git init命令 初始化一个项目仓库,会生成一个.git文件夹,默认隐藏  2.直接在这个夹中写代码  Git设置用户信息设置用户信息后,备份之后会存储备份者信息1234//设置用户名$git config --global user.name &amp;apos;&amp;apos;//设置邮箱$git config --global user.emai">
+<meta name="twitter:image" content="https://zardizumi.github.io/2017/12/03/git/reflog.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -57,7 +62,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>一些总结的小坑 | 栾皓琛的个人博客</title>
+<title>git | 栾皓琛的个人博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -280,11 +285,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-一些总结的小坑" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-git" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/06/02/一些总结的小坑/" class="article-date">
-      <time datetime="2017-06-02T07:51:14.000Z" itemprop="datePublished">2017-06-02</time>
+      <a href="/2017/12/03/git/" class="article-date">
+      <time datetime="2017-12-03T01:01:57.000Z" itemprop="datePublished">2017-12-03</time>
 </a>
 
 
@@ -299,7 +304,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      一些总结的小坑
+      git
     </h1>
   
 
@@ -309,6 +314,10 @@
         
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -316,9 +325,24 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <a id="more"></a>
-<h2 id="nrm"><a href="#nrm" class="headerlink" title="nrm"></a>nrm</h2><p>nrm是一个npm包,用于切换npm下载仓库,可以通过<br><code>npm install -g nrm</code><br>来安装.</p>
-<p>使用方法,<code>nrm ls</code> 显示可以切换的npm仓库,包括淘宝镜像等等.<br>        <code>nrm use &#39;名称&#39;</code>  使用哪个仓库</p>
+        <h2 id="Git入门"><a href="#Git入门" class="headerlink" title="Git入门"></a>Git入门</h2><p><strong> 1.在一个文件夹中打开git bash使用git init命令 初始化一个项目仓库,会生成一个.git文件夹,默认隐藏 </strong><br><strong> 2.直接在这个夹中写代码 </strong></p>
+<h2 id="Git设置用户信息"><a href="#Git设置用户信息" class="headerlink" title="Git设置用户信息"></a>Git设置用户信息</h2><p>设置用户信息后,备份之后会存储备份者信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//设置用户名</span><br><span class="line">$git config --global user.name &apos;&apos;</span><br><span class="line">//设置邮箱</span><br><span class="line">$git config --global user.email &apos;&apos;</span><br></pre></td></tr></table></figure></p>
+<h2 id="将代码存储到-git暂存区然后在存进版本库"><a href="#将代码存储到-git暂存区然后在存进版本库" class="headerlink" title="将代码存储到.git暂存区然后在存进版本库"></a>将代码存储到.git暂存区然后在存进版本库</h2><p><span style="color:red">使用git status查看当前项目目录中的代码处于哪个区域</span><br>流程 工作区(git status 红色)=&gt;暂存区(git status 绿色)=&gt;版本库 (nothing to commit, working directory clean)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//将工作区下的代码放到仓库门口(暂存区)</span><br><span class="line">git add ./readme.md</span><br><span class="line"></span><br><span class="line">git add ./     //直接将当前目录下所有代码放到暂存区</span><br><span class="line"></span><br><span class="line">//把代码放到房间里(版本库)</span><br><span class="line">git commit -m &apos;说明必须填写&apos;</span><br><span class="line"></span><br><span class="line">git commit --all -m &apos;&apos;  //一次性将所有修改后的代码放到版本库</span><br></pre></td></tr></table></figure>
+<h2 id="git-status-查看当前项目目录中代码是否被放到仓库中"><a href="#git-status-查看当前项目目录中代码是否被放到仓库中" class="headerlink" title="$ git status 查看当前项目目录中代码是否被放到仓库中"></a>$ git status 查看当前项目目录中代码是否被放到仓库中</h2><h2 id="gitignore-忽略文件"><a href="#gitignore-忽略文件" class="headerlink" title=".gitignore 忽略文件"></a>.gitignore 忽略文件</h2><p>被忽略的文件不会被git status 显示出来,也就不会被提交<br>新建.gitignore文件,写法 /文件路径,一行写一个<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/.idea</span><br><span class="line">/.gitignore</span><br><span class="line">/js        //忽略js目录中的所有文件</span><br><span class="line">/js/*      //忽略js文件加下所有js文件</span><br></pre></td></tr></table></figure></p>
+<h2 id="删除版本库中的代码"><a href="#删除版本库中的代码" class="headerlink" title="删除版本库中的代码"></a>删除版本库中的代码</h2><p><strong> 直接在工作区删除代码,再次提交,这样就删除了这个代码,但是之前的可以恢复 </strong></p>
+<h2 id="查看历史日志-git-log"><a href="#查看历史日志-git-log" class="headerlink" title="查看历史日志 git log"></a>查看历史日志 git log</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//显示简洁版的日志</span><br><span class="line">git log --oneline</span><br></pre></td></tr></table></figure>
+<h2 id="git-版本回退"><a href="#git-版本回退" class="headerlink" title="git 版本回退"></a>git 版本回退</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard Head~0 //回退到上一个版本,0是上一个.1是上上个以此类推</span><br></pre></td></tr></table></figure>
+<p><strong> 也可以可以使用git log查看版本号,通过git reset –hard xxxx 来精确回退到某个版本 </strong><br><strong> 回退之后,只会显示以当前版本为基准之前的日志,之后的不会显示. </strong></p>
+<h2 id="版本号切换"><a href="#版本号切换" class="headerlink" title="版本号切换"></a>版本号切换</h2><p>使用git reflog查看详细记录,可以查看到以前的版本号<br>通过git reset –hard 版本号 切换到任意版本<br><img src="/2017/12/03/git/reflog.png" alt=""><br><img src="/2017/12/03/git/切换版本号.png" alt=""></p>
+<h2 id="创建-切换-合并分支"><a href="#创建-切换-合并分支" class="headerlink" title="创建,切换,合并分支"></a>创建,切换,合并分支</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//创建分支</span><br><span class="line">$git branch &apos;luan&apos;</span><br><span class="line"></span><br><span class="line">//查看所有分支和master</span><br><span class="line">$git branch </span><br><span class="line"></span><br><span class="line">//切换分支</span><br><span class="line">$git checkout &apos;luan&apos;</span><br><span class="line"></span><br><span class="line">....在分支中进行add,commit等等操作将代码提交到分支的版本库中</span><br><span class="line"></span><br><span class="line">//合并分支,先切换到master,再合并分支</span><br><span class="line">$git branch &apos;master&apos;</span><br><span class="line">$git merge &apos;分支名&apos;</span><br><span class="line"></span><br><span class="line">//这样就将在分支中开发的代码合并到master中了</span><br></pre></td></tr></table></figure>
+<p>##处理合并时候的冲突 ##</p>
+<p><strong> 先在master提交了文件,然后进入分支,修改同一个文件,再次提交,然后回到master,合并就会出现矛盾. 解决矛盾需要手动删除矛盾的部分,
+ </strong><br> <img src="/2017/12/03/git/矛盾处理.png" alt=""></p>
+<h2 id="将代码上传到github"><a href="#将代码上传到github" class="headerlink" title="将代码上传到github"></a>将代码上传到github</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//提交到github的master上</span><br><span class="line">git push https地址 master</span><br></pre></td></tr></table></figure>
+<h2 id="从github拉取代码"><a href="#从github拉取代码" class="headerlink" title="从github拉取代码"></a>从github拉取代码</h2><p><strong> 1.初始化一个git仓储 </strong><br><strong> 2.通过git pull 地址 master 拉取代码 </strong></p>
+<p><strong> 或者直接使用git clone 地址 他会新建一个文件夹</strong></p>
+<h2 id="ssh上传"><a href="#ssh上传" class="headerlink" title="ssh上传"></a>ssh上传</h2><p><strong> 通过ssh-keygen -t rsa -C ‘邮箱地址’  生成公钥和私钥</strong><br><strong> 在文件夹中找到.pub结尾的是公钥，将公钥中的内容复制到github设置。   </strong></p>
 
       
     </div>
@@ -327,13 +351,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/06/02/一些总结的小坑/">一些总结的小坑</a></p>
+        <p><span>本文标题:</span><a href="/2017/12/03/git/">git</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">栾皓琛</a></p>
-        <p><span>发布时间:</span>2017-06-02, 15:51:14</p>
-        <p><span>最后更新:</span>2017-11-25, 00:53:34</p>
+        <p><span>发布时间:</span>2017-12-03, 09:01:57</p>
+        <p><span>最后更新:</span>2017-12-05, 09:23:17</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/06/02/一些总结的小坑/" title="一些总结的小坑">https://zardizumi.github.io/2017/06/02/一些总结的小坑/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://zardizumi.github.io/2017/06/02/一些总结的小坑/　　作者: 栾皓琛" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/12/03/git/" title="git">https://zardizumi.github.io/2017/12/03/git/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://zardizumi.github.io/2017/12/03/git/　　作者: 栾皓琛" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -345,16 +369,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/07/25/四款移动插件用法/">
-                    四款移动开发中的插件的用法
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/05/28/two-md/">
-                    PHP
+                <a href="/2017/11/27/事件委托/">
+                    事件委托
                 </a>
             </div>
         
@@ -366,7 +384,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#nrm"><span class="toc-number">1.</span> <span class="toc-text">nrm</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Git入门"><span class="toc-number">1.</span> <span class="toc-text">Git入门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git设置用户信息"><span class="toc-number">2.</span> <span class="toc-text">Git设置用户信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将代码存储到-git暂存区然后在存进版本库"><span class="toc-number">3.</span> <span class="toc-text">将代码存储到.git暂存区然后在存进版本库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-status-查看当前项目目录中代码是否被放到仓库中"><span class="toc-number">4.</span> <span class="toc-text">$ git status 查看当前项目目录中代码是否被放到仓库中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gitignore-忽略文件"><span class="toc-number">5.</span> <span class="toc-text">.gitignore 忽略文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除版本库中的代码"><span class="toc-number">6.</span> <span class="toc-text">删除版本库中的代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看历史日志-git-log"><span class="toc-number">7.</span> <span class="toc-text">查看历史日志 git log</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-版本回退"><span class="toc-number">8.</span> <span class="toc-text">git 版本回退</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#版本号切换"><span class="toc-number">9.</span> <span class="toc-text">版本号切换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建-切换-合并分支"><span class="toc-number">10.</span> <span class="toc-text">创建,切换,合并分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将代码上传到github"><span class="toc-number">11.</span> <span class="toc-text">将代码上传到github</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从github拉取代码"><span class="toc-number">12.</span> <span class="toc-text">从github拉取代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ssh上传"><span class="toc-number">13.</span> <span class="toc-text">ssh上传</span></a></li></ol>
         
     </div>
     <style>
@@ -402,7 +420,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"一些总结的小坑　| 栾皓琛的个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"git　| 栾皓琛的个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -436,15 +454,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/07/25/四款移动插件用法/" title="上一篇: 四款移动开发中的插件的用法">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/05/28/two-md/" title="下一篇: PHP">
+            <a href="/2017/11/27/事件委托/" title="下一篇: 事件委托">
                 <i class="fa fa-angle-right"></i>
             </a>
         
