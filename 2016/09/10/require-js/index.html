@@ -15,22 +15,17 @@
 
 
 
-<meta name="description" content="Git入门手册">
-<meta name="keywords" content="git">
+<meta name="description" content="前端模块化避免全局变量的污染,加载过多的js文件.我们使用Require.js进行模块化开发. 注意:所有的路径名中的文件都不要带后缀,比如.js  定义一个模块 define 在module.js中通过define定义模块 123456	define(function() &amp;#123;	function fo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git">
-<meta property="og:url" content="https://zardizumi.github.io/2016/04/17/git/index.html">
+<meta property="og:title" content="Require.js">
+<meta property="og:url" content="https://zardizumi.github.io/2016/09/10/require-js/index.html">
 <meta property="og:site_name" content="栾皓琛的个人博客">
-<meta property="og:description" content="Git入门手册">
+<meta property="og:description" content="前端模块化避免全局变量的污染,加载过多的js文件.我们使用Require.js进行模块化开发. 注意:所有的路径名中的文件都不要带后缀,比如.js  定义一个模块 define 在module.js中通过define定义模块 123456	define(function() &amp;#123;	function foo() &amp;#123;		console.log(123);	&amp;#125;	foo();">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://zardizumi.github.io/2016/04/17/git/reflog.png">
-<meta property="og:image" content="https://zardizumi.github.io/2016/04/17/git/切换版本号.png">
-<meta property="og:image" content="https://zardizumi.github.io/2016/04/17/git/矛盾处理.png">
-<meta property="og:updated_time" content="2017-12-09T10:47:45.500Z">
+<meta property="og:updated_time" content="2017-12-10T15:41:45.948Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git">
-<meta name="twitter:description" content="Git入门手册">
-<meta name="twitter:image" content="https://zardizumi.github.io/2016/04/17/git/reflog.png">
+<meta name="twitter:title" content="Require.js">
+<meta name="twitter:description" content="前端模块化避免全局变量的污染,加载过多的js文件.我们使用Require.js进行模块化开发. 注意:所有的路径名中的文件都不要带后缀,比如.js  定义一个模块 define 在module.js中通过define定义模块 123456	define(function() &amp;#123;	function foo() &amp;#123;		console.log(123);	&amp;#125;	foo();">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -62,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>git | 栾皓琛的个人博客</title>
+<title>Require.js | 栾皓琛的个人博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -285,11 +280,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-git" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-require-js" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/04/17/git/" class="article-date">
-      <time datetime="2016-04-17T01:01:57.000Z" itemprop="datePublished">2016-04-17</time>
+      <a href="/2016/09/10/require-js/" class="article-date">
+      <time datetime="2016-09-10T02:45:35.000Z" itemprop="datePublished">2016-09-10</time>
 </a>
 
 
@@ -304,7 +299,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      git
+      Require.js
     </h1>
   
 
@@ -314,10 +309,6 @@
         
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
-    </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -325,31 +316,20 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Git入门手册<br><a id="more"></a></p>
-<h2 id="Git入门"><a href="#Git入门" class="headerlink" title="Git入门"></a>Git入门</h2><p><strong> 1.在一个文件夹中打开git bash使用git init命令 初始化一个项目仓库,会生成一个.git文件夹,默认隐藏 </strong><br><strong> 2.直接在这个夹中写代码 </strong></p>
-<h2 id="Git设置用户信息"><a href="#Git设置用户信息" class="headerlink" title="Git设置用户信息"></a>Git设置用户信息</h2><p>设置用户信息后,备份之后会存储备份者信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//设置用户名</span><br><span class="line">$git config --global user.name &apos;&apos;</span><br><span class="line">//设置邮箱</span><br><span class="line">$git config --global user.email &apos;&apos;</span><br></pre></td></tr></table></figure></p>
-<h2 id="将代码存储到-git暂存区然后在存进版本库"><a href="#将代码存储到-git暂存区然后在存进版本库" class="headerlink" title="将代码存储到.git暂存区然后在存进版本库"></a>将代码存储到.git暂存区然后在存进版本库</h2><p><span style="color:red">使用git status查看当前项目目录中的代码处于哪个区域</span><br>流程 工作区(git status 红色)=&gt;暂存区(git status 绿色)=&gt;版本库 (nothing to commit, working directory clean)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//将工作区下的代码放到仓库门口(暂存区)</span><br><span class="line">git add ./readme.md</span><br><span class="line"></span><br><span class="line">git add ./     //直接将当前目录下所有代码放到暂存区</span><br><span class="line"></span><br><span class="line">//把代码放到房间里(版本库)</span><br><span class="line">git commit -m &apos;说明必须填写&apos;</span><br><span class="line"></span><br><span class="line">git commit --all -m &apos;&apos;  //一次性将所有修改后的代码放到版本库</span><br></pre></td></tr></table></figure>
-<h2 id="git-status-查看当前项目目录中代码是否被放到仓库中"><a href="#git-status-查看当前项目目录中代码是否被放到仓库中" class="headerlink" title="$ git status 查看当前项目目录中代码是否被放到仓库中"></a>$ git status 查看当前项目目录中代码是否被放到仓库中</h2><h2 id="gitignore-忽略文件"><a href="#gitignore-忽略文件" class="headerlink" title=".gitignore 忽略文件"></a>.gitignore 忽略文件</h2><p>被忽略的文件不会被git status 显示出来,也就不会被提交<br>新建.gitignore文件,写法 /文件路径,一行写一个<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/.idea</span><br><span class="line">/.gitignore</span><br><span class="line">/js        //忽略js目录中的所有文件</span><br><span class="line">/js/*      //忽略js文件加下所有js文件</span><br></pre></td></tr></table></figure></p>
-<h2 id="删除版本库中的代码"><a href="#删除版本库中的代码" class="headerlink" title="删除版本库中的代码"></a>删除版本库中的代码</h2><p><strong> 直接在工作区删除代码,再次提交,这样就删除了这个代码,但是之前的可以恢复 </strong></p>
-<h2 id="查看历史日志-git-log"><a href="#查看历史日志-git-log" class="headerlink" title="查看历史日志 git log"></a>查看历史日志 git log</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//显示简洁版的日志</span><br><span class="line">git log --oneline</span><br></pre></td></tr></table></figure>
-<h2 id="git-版本回退"><a href="#git-版本回退" class="headerlink" title="git 版本回退"></a>git 版本回退</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard Head~0 //回退到上一个版本,0是上一个.1是上上个以此类推</span><br></pre></td></tr></table></figure>
-<p><strong> 也可以可以使用git log查看版本号,通过git reset –hard xxxx 来精确回退到某个版本 </strong><br><strong> 回退之后,只会显示以当前版本为基准之前的日志,之后的不会显示. </strong></p>
-<h2 id="版本号切换"><a href="#版本号切换" class="headerlink" title="版本号切换"></a>版本号切换</h2><p>使用git reflog查看详细记录,可以查看到以前的版本号<br>通过git reset –hard 版本号 切换到任意版本<br><img src="/2016/04/17/git/reflog.png" alt=""><br><img src="/2016/04/17/git/切换版本号.png" alt=""></p>
-<h2 id="创建-切换-合并分支"><a href="#创建-切换-合并分支" class="headerlink" title="创建,切换,合并分支"></a>创建,切换,合并分支</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//创建分支</span><br><span class="line">$git branch &apos;luan&apos;</span><br><span class="line"></span><br><span class="line">//查看所有分支和master</span><br><span class="line">$git branch </span><br><span class="line"></span><br><span class="line">//切换分支</span><br><span class="line">$git checkout &apos;luan&apos;</span><br><span class="line"></span><br><span class="line">....在分支中进行add,commit等等操作将代码提交到分支的版本库中</span><br><span class="line"></span><br><span class="line">//合并分支,先切换到master,再合并分支</span><br><span class="line">$git branch &apos;master&apos;</span><br><span class="line">$git merge &apos;分支名&apos;</span><br><span class="line"></span><br><span class="line">//这样就将在分支中开发的代码合并到master中了</span><br></pre></td></tr></table></figure>
-<p>##处理合并时候的冲突 ##</p>
-<p><strong> 先在master提交了文件,然后进入分支,修改同一个文件,再次提交,然后回到master,合并就会出现矛盾. 解决矛盾需要手动删除矛盾的部分,
- </strong><br> <img src="/2016/04/17/git/矛盾处理.png" alt=""></p>
-<h2 id="将代码上传到github"><a href="#将代码上传到github" class="headerlink" title="将代码上传到github"></a>将代码上传到github</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//提交到github的master上</span><br><span class="line">git push https地址 master</span><br></pre></td></tr></table></figure>
-<h2 id="从github拉取代码"><a href="#从github拉取代码" class="headerlink" title="从github拉取代码"></a>从github拉取代码</h2><p><strong> 1.初始化一个git仓储 </strong><br><strong> 2.通过git pull 地址 master 拉取代码 </strong></p>
-<p><strong> 或者直接使用git clone 地址 他会新建一个文件夹</strong></p>
-<h2 id="ssh上传"><a href="#ssh上传" class="headerlink" title="ssh上传"></a>ssh上传</h2><p><strong> 通过ssh-keygen -t rsa -C ‘邮箱地址’  生成公钥和私钥</strong><br><strong> 在文件夹中找到.pub结尾的是公钥，将公钥中的内容复制到github设置。   </strong></p>
-<h2 id="多人开发冲突解决"><a href="#多人开发冲突解决" class="headerlink" title="多人开发冲突解决"></a>多人开发冲突解决</h2><p>别人如果提交了代码，另一个人如果想直接提交是提交不了的，因为master中的版本比本地的高，所以要先pull下来，解决了冲突部分，再push上去    </p>
-<p><strong> 小明：改动=&gt; add =&gt; commit =&gt; push </strong><br><strong> 小红：改动=&gt; add =&gt; commit =&gt; pull =&gt; 解决冲突 =&gt; commit =&gt;再次push </strong></p>
-<p><strong> 再提交之前要先pull，因为如果别人也在修改这个项目，则master的版本比本地高，不能直接push，必须先pull下来，再add，commit之后再push </strong></p>
-<h2 id="简写push"><a href="#简写push" class="headerlink" title="简写push"></a>简写push</h2><p><strong> 仅限当前仓库 </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//设置短名字代替地址</span><br><span class="line">git remote add origin 地址 </span><br><span class="line">//使用短名字push 并且关联master</span><br><span class="line">git push origin -u master</span><br><span class="line">//下一次push不需要写master,因为-u git会把当前分支与远程分支进行关联</span><br><span class="line">git push</span><br><span class="line">//pull也可以直接使用简写，</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure></p>
-<p>如果要在别的仓库中使用简写模式，必须重新设置remote和-u</p>
+        <a id="more"></a>
+<h2 id="前端模块化"><a href="#前端模块化" class="headerlink" title="前端模块化"></a>前端模块化</h2><p>避免全局变量的污染,加载过多的js文件.我们使用Require.js进行模块化开发.</p>
+<p style="font-size: 30px;color:red">注意:所有的路径名中的文件都不要带后缀,比如.js</p>
 
+<h2 id="定义一个模块-define"><a href="#定义一个模块-define" class="headerlink" title="定义一个模块 define"></a>定义一个模块 define</h2><p><strong> 在module.js中通过define定义模块 </strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">	define(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="number">123</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	foo();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h2 id="引入一个模块-require"><a href="#引入一个模块-require" class="headerlink" title="引入一个模块 require"></a>引入一个模块 require</h2><p>因为模块和html文件在同一目录,所以直接通过文件名引入<br><strong style="color:red">require接收两个参数,第一个必须是一个数组,将模块名传入,第二个是引入模块成功后执行的回调函数</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;https://cdn.bootcss.com/require.js/2.3.5/require.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">require([&apos;module&apos;],function()&#123;&#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="配置baseUrl"><a href="#配置baseUrl" class="headerlink" title="配置baseUrl"></a>配置baseUrl</h2><p><strong> require({baseUrl:’’}) </strong><br>baseUrl用来配置模块的基本查找路径.如果不配置,那么默认是在引入了require.js的这个html文件的当前目录下查找.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>([<span class="string">'a'</span>]) <span class="comment">//在当前目录下找a.js</span></span><br><span class="line"></span><br><span class="line">------------------------------</span><br><span class="line">requir.econfig(&#123;</span><br><span class="line">	baseUrl:<span class="string">'js'</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">require</span>([<span class="string">'a'</span>]) <span class="comment">//在js文件夹下查找a.js</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="加载外部的文件"><a href="#加载外部的文件" class="headerlink" title="加载外部的文件"></a>加载外部的文件</h2><p>###配置短名字</p>
+<p>如果从外部引入文件的话,会出现很长的路径名,这时候我们需要配置短名字,并且可以配置多个路径,如果前一个加载不成功就加载后一个,依次加载.</p>
+<p><strong> 使用require.config({path:{}}) 配置短名字</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>.config(&#123;</span><br><span class="line">	path:&#123;</span><br><span class="line">		jquery:[<span class="string">'http://libs.baidu.com/jquery/2.0.3/jquery'</span>,<span class="string">'js/jquery'</span>]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">require</span>([<span class="string">'jquery'</span>],<span class="function"><span class="keyword">function</span>(<span class="params">$</span>)</span>&#123;&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="回调函数的参数"><a href="#回调函数的参数" class="headerlink" title="回调函数的参数"></a>回调函数的参数</h3><p>模块加载完的回调函数可以传入参数,这个参数是你回调函数中要从加载模块中依赖的东西,比如加载了jQuery,你就要依赖$来使用jquery的方法</p>
+<h2 id="加载第三方模块-shim-垫"><a href="#加载第三方模块-shim-垫" class="headerlink" title="加载第三方模块 shim 垫"></a>加载第三方模块 shim 垫</h2><p>有些模块不符合AMD规范,比如jQuery的表单插件,所以我们就要将该插件’垫’到jQuery中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>.config(&#123;</span><br><span class="line">	shim:&#123;</span><br><span class="line">		<span class="string">'jquery.from'</span>:[<span class="string">'jquery'</span>]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">requrie([<span class="string">'jquery'</span>,<span class="string">'jquery.form'</span>],<span class="function"><span class="keyword">function</span>(<span class="params">$</span>)</span>&#123;</span><br><span class="line">	$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">       	$(<span class="string">"#form"</span>).ajaxSubmit(&#123;...&#125;);</span><br><span class="line">   	&#125;)</span><br><span class="line">&#125;) <span class="comment">//被依赖的写在前面</span></span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -357,13 +337,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/04/17/git/">git</a></p>
+        <p><span>本文标题:</span><a href="/2016/09/10/require-js/">Require.js</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">栾皓琛</a></p>
-        <p><span>发布时间:</span>2016-04-17, 09:01:57</p>
-        <p><span>最后更新:</span>2017-12-09, 18:47:45</p>
+        <p><span>发布时间:</span>2016-09-10, 10:45:35</p>
+        <p><span>最后更新:</span>2017-12-10, 23:41:45</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/04/17/git/" title="git">https://zardizumi.github.io/2016/04/17/git/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://zardizumi.github.io/2016/04/17/git/　　作者: 栾皓琛" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/09/10/require-js/" title="Require.js">https://zardizumi.github.io/2016/09/10/require-js/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://zardizumi.github.io/2016/09/10/require-js/　　作者: 栾皓琛" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -376,11 +356,17 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/12/20/一些总结的小坑/">
+                    一些总结的小坑
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
                 <a href="/2016/04/20/gulp/">
                     gulp
                 </a>
             </div>
-        
         
     </nav>
 
@@ -390,7 +376,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Git入门"><span class="toc-number">1.</span> <span class="toc-text">Git入门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git设置用户信息"><span class="toc-number">2.</span> <span class="toc-text">Git设置用户信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将代码存储到-git暂存区然后在存进版本库"><span class="toc-number">3.</span> <span class="toc-text">将代码存储到.git暂存区然后在存进版本库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-status-查看当前项目目录中代码是否被放到仓库中"><span class="toc-number">4.</span> <span class="toc-text">$ git status 查看当前项目目录中代码是否被放到仓库中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gitignore-忽略文件"><span class="toc-number">5.</span> <span class="toc-text">.gitignore 忽略文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除版本库中的代码"><span class="toc-number">6.</span> <span class="toc-text">删除版本库中的代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看历史日志-git-log"><span class="toc-number">7.</span> <span class="toc-text">查看历史日志 git log</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-版本回退"><span class="toc-number">8.</span> <span class="toc-text">git 版本回退</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#版本号切换"><span class="toc-number">9.</span> <span class="toc-text">版本号切换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建-切换-合并分支"><span class="toc-number">10.</span> <span class="toc-text">创建,切换,合并分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将代码上传到github"><span class="toc-number">11.</span> <span class="toc-text">将代码上传到github</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从github拉取代码"><span class="toc-number">12.</span> <span class="toc-text">从github拉取代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ssh上传"><span class="toc-number">13.</span> <span class="toc-text">ssh上传</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多人开发冲突解决"><span class="toc-number">14.</span> <span class="toc-text">多人开发冲突解决</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简写push"><span class="toc-number">15.</span> <span class="toc-text">简写push</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前端模块化"><span class="toc-number">1.</span> <span class="toc-text">前端模块化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定义一个模块-define"><span class="toc-number">2.</span> <span class="toc-text">定义一个模块 define</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引入一个模块-require"><span class="toc-number">3.</span> <span class="toc-text">引入一个模块 require</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置baseUrl"><span class="toc-number">4.</span> <span class="toc-text">配置baseUrl</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#加载外部的文件"><span class="toc-number">5.</span> <span class="toc-text">加载外部的文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#回调函数的参数"><span class="toc-number">5.1.</span> <span class="toc-text">回调函数的参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#加载第三方模块-shim-垫"><span class="toc-number">6.</span> <span class="toc-text">加载第三方模块 shim 垫</span></a></li></ol>
         
     </div>
     <style>
@@ -426,7 +412,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"git　| 栾皓琛的个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Require.js　| 栾皓琛的个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -460,7 +446,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/04/20/gulp/" title="上一篇: gulp">
+            <a href="/2016/12/20/一些总结的小坑/" title="上一篇: 一些总结的小坑">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -468,7 +454,9 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2016/04/20/gulp/" title="下一篇: gulp">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
     </div>
 
