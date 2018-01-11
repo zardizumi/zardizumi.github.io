@@ -209,7 +209,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂文/">杂文</a></li></ul>
                     </div>
                 </section>
                 
@@ -288,6 +288,286 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-koa" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/01/05/koa/" class="article-date">
+      <time datetime="2018-01-04T16:17:21.000Z" itemprop="datePublished">2018-01-05</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/05/koa/">koa</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>#Koa笔记</p>
+<p>##Hello world</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line">app.use(<span class="keyword">async</span>(ctx)=&gt;&#123;</span><br><span class="line">	ctx.body = <span class="string">'hello world!'</span>;</span><br><span class="line">&#125;)</span><br><span class="line">app.listen(<span class="number">3000</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'server is running at 3000'</span>);</span><br></pre></td></tr></table></figure>
+<p>##async和await(async wait)</p>
+<p>###声明一个异步方法<br>直接在function 前加上async,异步方法会返回一个promise对象.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">testAsync</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">'Hello async'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(testAsync()); <span class="comment">//Promise &#123; 'Hello async' &#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>###awit<br>awit就是async wait ,awit既可以接收promise对象也可以接受普通的返回值,<br><strong> await必须在async中使用 </strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回promise对象</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">testAsync</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">'Hello async'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//返回普通返回值</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">"hello"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//使用异步方法,并使用await接收返回的结果</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">testAwait</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">const</span> r1 = <span class="keyword">await</span> test();</span><br><span class="line">	<span class="keyword">const</span> r2 = <span class="keyword">await</span> testAsync();</span><br><span class="line">	<span class="built_in">console</span>.log(r1);</span><br><span class="line">	<span class="built_in">console</span>.log(r2);</span><br><span class="line">&#125;</span><br><span class="line">testAwait();<span class="comment">//hello Hello async</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//当函数返回一个promise对象时就等同于使用了async,用来模拟一个异步的请求</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">longTime</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span>=&gt;</span>&#123;</span><br><span class="line">		setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>resolve(<span class="string">'longtime'</span>),<span class="number">1000</span>);</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">const</span> r = <span class="keyword">await</span> longTime();</span><br><span class="line">	<span class="built_in">console</span>.log(r);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'hahaha'</span>);<span class="comment">//先出现hahaha</span></span><br><span class="line">test();<span class="comment">//1s后出现longtime</span></span><br></pre></td></tr></table></figure>
+<h2 id="koa-中的get请求"><a href="#koa-中的get请求" class="headerlink" title="koa 中的get请求"></a>koa 中的get请求</h2><p>###从ctx.request中获取get请求信息<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line">app.use(<span class="keyword">async</span>(ctx)=&gt;&#123;</span><br><span class="line">	<span class="comment">//从上下文对象中获取请求地址</span></span><br><span class="line">	<span class="keyword">let</span> url = ctx.url;</span><br><span class="line">	<span class="comment">//使用ctx的request获取请求对象,前台的请求信息都在这个对象中.</span></span><br><span class="line">	<span class="keyword">let</span> request = ctx.request;</span><br><span class="line">	<span class="comment">//返回格式化好的参数对象</span></span><br><span class="line">	<span class="keyword">let</span> req_query = request.query;</span><br><span class="line">	<span class="comment">//返回参数字符串</span></span><br><span class="line">	<span class="keyword">let</span> req_querystring = request.querystring;</span><br><span class="line">	<span class="comment">//打印出请求信息</span></span><br><span class="line">	ctx.body = &#123;</span><br><span class="line">		url,</span><br><span class="line">		req_query,</span><br><span class="line">		req_querystring</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line">app.listen(<span class="number">3000</span>,()=&gt;&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'服务已经启动'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//&#123;"url":"/?user=luan&amp;age=20","req_query":&#123;"user":"luan","age":"20"&#125;,"req_querystring":"user=luan&amp;age=20"&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>###直接从ctx上下文中获取get请求信息<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line">app.use(<span class="keyword">async</span>(ctx)=&gt;&#123;</span><br><span class="line">	<span class="keyword">let</span> url = ctx.url;</span><br><span class="line">	<span class="keyword">let</span> query = ctx.query;</span><br><span class="line">	<span class="keyword">let</span> querystring = ctx.querystring;</span><br><span class="line">	ctx.body = &#123;</span><br><span class="line">		url,</span><br><span class="line">		query,</span><br><span class="line">		querystring</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h2 id="koa-中的POST请求"><a href="#koa-中的POST请求" class="headerlink" title="koa 中的POST请求"></a>koa 中的POST请求</h2><p>Koa默认没有封装获取post请求参数的方法,所以我们要通过ctx.req获取详细的请求信息.</p>
+<h3 id="获取post请求的步骤"><a href="#获取post请求的步骤" class="headerlink" title="获取post请求的步骤"></a>获取post请求的步骤</h3><p>1.解析上下文ctx中的原生nodex.js对象req。<br><br>2.将POST表单数据解析成query string-字符串.(例如:user=jspang&amp;age=18)<br><br>3.将字符串转换成JSON格式。<br></p>
+<h3 id="ctx-req和ctx-request的区别"><a href="#ctx-req和ctx-request的区别" class="headerlink" title="ctx.req和ctx.request的区别"></a>ctx.req和ctx.request的区别</h3><p><strong> ctx.request:是Koa2中context经过封装的请求对象，它用起来更直观和简单。 </strong><br><strong> ctx.req:是context提供的node.js原生HTTP请求对象。这个虽然不那么直观，但是可以得到更多的内容，适合我们深度编程。</strong></p>
+<p><strong>例子</strong><br>下面的例子,当打开127.0.0.1:3000时,出现表单,因为是get请求,当我们提交表单后,会显示接收到post参数,如果输入了错误的url则会显示404<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa  = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line">app.use(<span class="keyword">async</span>(ctx)=&gt;&#123;</span><br><span class="line">	<span class="keyword">if</span>(ctx.url ===<span class="string">'/'</span> &amp;&amp; ctx.method === <span class="string">'GET'</span>)&#123;</span><br><span class="line">		<span class="comment">//当请求为get是,显示表单页面</span></span><br><span class="line">		<span class="keyword">let</span> html = <span class="string">`&lt;h1&gt;LuanHaoChen&lt;/h1&gt;</span></span><br><span class="line"><span class="string">				&lt;form  method='POST' action='/'&gt;</span></span><br><span class="line"><span class="string">				&lt;label for="username"&gt;用户名&lt;/label&gt;</span></span><br><span class="line"><span class="string">				&lt;input type="text" id='username' name='username' /&gt;</span></span><br><span class="line"><span class="string">				&lt;label for="age"&gt;年龄&lt;/label&gt;</span></span><br><span class="line"><span class="string">				&lt;input type="text" id='age' name='age' /&gt;</span></span><br><span class="line"><span class="string">				&lt;label for="website"&gt;博客&lt;/label&gt;</span></span><br><span class="line"><span class="string">				&lt;input type="text" id='website' name='website' /&gt;</span></span><br><span class="line"><span class="string">				&lt;button type='submit'&gt;提交&lt;/button&gt;</span></span><br><span class="line"><span class="string">				&lt;/form&gt;</span></span><br><span class="line"><span class="string">			`</span>;</span><br><span class="line">			ctx.body = html;</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(ctx.url===<span class="string">'/'</span> &amp;&amp; ctx.method === <span class="string">'POST'</span> )&#123;</span><br><span class="line">		ctx.body = <span class="string">`&lt;h1&gt;接收到POST参数&lt;/h1&gt;`</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>  &#123;</span><br><span class="line">		ctx.body = <span class="string">`&lt;h1&gt;404!Not Found!&lt;/h1&gt;`</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line">app.listen(<span class="number">3000</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'服务器在3000端口上启动'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-python从零开始" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/12/19/python从零开始/" class="article-date">
+      <time datetime="2017-12-18T17:03:17.000Z" itemprop="datePublished">2017-12-19</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/19/python从零开始/">python从零开始</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>从零开始学习python<br></p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2017/12/19/python从零开始/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-nodejs从零开始" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/12/16/nodejs从零开始/" class="article-date">
+      <time datetime="2017-12-15T16:08:41.000Z" itemprop="datePublished">2017-12-16</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/16/nodejs从零开始/">nodejs从零开始</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="终端操作"><a href="#终端操作" class="headerlink" title="终端操作"></a>终端操作</h2><p>md 创建目录</p>
+<p>rddir 删除目录(目录是空的才能删)</p>
+<p>del 删除文件</p>
+<h2 id="nvm"><a href="#nvm" class="headerlink" title="nvm"></a>nvm</h2><p>nvm是nodejs的版本管理工具</p>
+<h2 id="全局成员-globals"><a href="#全局成员-globals" class="headerlink" title="全局成员 globals"></a>全局成员 globals</h2><p>globals是nodejs的全局API</p>
+<h3 id="双下划线dirname"><a href="#双下划线dirname" class="headerlink" title="双下划线dirname"></a>双下划线dirname</h3><p>文件的路径,不包含文件名</p>
+<h3 id="双下划线filename"><a href="#双下划线filename" class="headerlink" title="双下划线filename"></a>双下划线filename</h3><p>包含文件名的全路径</p>
+<h3 id="Buffer"><a href="#Buffer" class="headerlink" title="Buffer"></a>Buffer</h3><h2 id="服务端模块化开发-CommonJS-Node-js"><a href="#服务端模块化开发-CommonJS-Node-js" class="headerlink" title="服务端模块化开发 CommonJS -Node.js"></a>服务端模块化开发 CommonJS -Node.js</h2><p>###定义模块<br>一个js文件就是一个模块,模块内部的成员都是相互独立的.</p>
+<p>###模块成员的导出引入</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//01.js</span></span><br><span class="line"><span class="keyword">var</span> sum = <span class="function">(<span class="params">num1,num2</span>) =&gt;</span>&#123;<span class="keyword">return</span> num1+num2&#125;</span><br><span class="line">exports.sum = sum;</span><br><span class="line"><span class="comment">//或者module导出</span></span><br><span class="line"><span class="built_in">module</span>.exports = sum;</span><br><span class="line"></span><br><span class="line"><span class="comment">//02.js</span></span><br><span class="line"><span class="keyword">const</span> <span class="built_in">module</span> = <span class="built_in">require</span>(<span class="string">'./01.js'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">module</span>.sum(<span class="number">1</span>,<span class="number">2</span>));</span><br><span class="line"><span class="comment">//或者module导出</span></span><br><span class="line"><span class="keyword">const</span> sum = requir(<span class="string">'./01.js'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(sum(<span class="number">2</span>,<span class="number">3</span>))</span><br></pre></td></tr></table></figure>
+<h3 id="global导出"><a href="#global导出" class="headerlink" title="global导出"></a>global导出</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//01.js</span></span><br><span class="line"><span class="keyword">var</span> flag = <span class="number">123</span>;</span><br><span class="line">global.flag = flag;</span><br><span class="line"></span><br><span class="line"><span class="built_in">require</span>(<span class="string">'./01.js'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(global.flag)</span><br></pre></td></tr></table></figure>
+<h3 id="模块后缀"><a href="#模块后缀" class="headerlink" title="模块后缀"></a>模块后缀</h3><p>.js .json .node(通过c++编译的二进制文件)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//01.json</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="string">"name"</span>:<span class="string">'123'</span>,</span><br><span class="line">	<span class="string">"age"</span>:<span class="number">20</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> m = <span class="built_in">require</span>(<span class="string">'./01.json'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(m)<span class="comment">//&#123;"name":"123","age":20&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="模块的加载优先级-不加文件后缀时的优先级-："><a href="#模块的加载优先级-不加文件后缀时的优先级-：" class="headerlink" title="模块的加载优先级(不加文件后缀时的优先级)："></a>模块的加载优先级(不加文件后缀时的优先级)：</h3><p>.js -&gt; .json -&gt; .node</p>
+<h2 id="Buffer-1"><a href="#Buffer-1" class="headerlink" title="Buffer"></a>Buffer</h2><p>Buffer用于处理二级制,Buffer本质上就是字节数组</p>
+<h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><h3 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h3><h3 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h3><p>Buffer.alloc(size,fill) 分配一个长度为size的buffer,如果fill为undefined则用0填充<br><br>Buffer.from(string) 新建一个包含所给的 JavaScript 字符串 string 的 Buffer 。 encoding 参数指定 string 的字符编码。<br><br>Buffer.from(array) 通过一个八位字节的 array 创建一个新的 Buffer 。<br><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> buff = Buffer.alloc(<span class="number">5</span>,<span class="string">"a"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(buff)<span class="comment">//&lt;Buffer 61 61 61 61 61&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//创建一个用八进制表示的abc的buffer</span></span><br><span class="line"><span class="keyword">const</span> buf = Buffer.from([<span class="number">0x61</span>, <span class="number">0x62</span>,<span class="number">0x63</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(buf.toString());<span class="comment">//abc</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="http模块"><a href="#http模块" class="headerlink" title="http模块"></a>http模块</h2><p>###createServer(function(req,res){})方法</p>
+<p><strong> req获取url相关信息,res用来对浏览器进行一些响应</strong></p>
+<h4 id="使用http模块创建一个服务器"><a href="#使用http模块创建一个服务器" class="headerlink" title="使用http模块创建一个服务器"></a>使用http模块创建一个服务器</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">let</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line">	http.createServer(<span class="function">(<span class="params">req,res</span>)=&gt;</span>&#123;</span><br><span class="line">	<span class="comment">//设置响应头</span></span><br><span class="line">	res.writeHead(<span class="number">200</span>,&#123;<span class="string">"Content-Type"</span>:<span class="string">"text/html;charset='utf-8'"</span>&#125;);</span><br><span class="line">	<span class="comment">//设置响应主体,可以设置多个,会依次响应出来</span></span><br><span class="line">	res.write(<span class="string">'Hello world'</span>);</span><br><span class="line">	res.write(<span class="string">'Hello world1'</span>);</span><br><span class="line">	res.write(<span class="string">'Hello world2'</span>);</span><br><span class="line">	res.write(<span class="string">'Hello world3'</span>);</span><br><span class="line">	<span class="comment">//结束响应	</span></span><br><span class="line">	res.end()</span><br><span class="line">&#125;).listen(<span class="number">8080</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'server is at 8080'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="url模块"><a href="#url模块" class="headerlink" title="url模块"></a>url模块</h2><p>###parse()方法<br><strong> url.parse() 方法会解析一个 URL 字符串并返回一个 URL 对象。如果在url地址后在传入一个true,则会将查询字符串解析为一个对象. </strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">	</span><br></pre></td></tr></table></figure></p>
+<p>###format(urlObj)方法<br><strong> 和parse功能相反,将一个url对象传入,会自动解析成一个url地址 </strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">	</span><br></pre></td></tr></table></figure></p>
+<p>###resolve(from,to)方法<br><strong> 该方法会为一个基本url添加二级目录,如果没有则添加,否则替换.如果from不是一个完整的url,那么就会替换最后一段</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>###通过url和http模块获取url中的查询字符串<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">const</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>);</span><br><span class="line">http.createServer(<span class="function">(<span class="params">req,res</span>)=&gt;</span>&#123;</span><br><span class="line">	res.writeHead(<span class="number">200</span>,&#123;<span class="string">'Content-Type'</span>:<span class="string">'text/html;charset=utf-8'</span>&#125;);</span><br><span class="line">	<span class="keyword">if</span>(req.url !== <span class="string">'/favicon.ico'</span>) &#123;</span><br><span class="line">		<span class="keyword">let</span> result = url.parse(req.url,<span class="literal">true</span>);</span><br><span class="line">		<span class="built_in">console</span>.log(result.query);	</span><br><span class="line">	&#125;</span><br><span class="line">	res.end();</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">&#125;).listen(<span class="number">8080</span>)</span><br></pre></td></tr></table></figure></p>
+<h2 id="supervisor-监听代码自动重启nodejs"><a href="#supervisor-监听代码自动重启nodejs" class="headerlink" title="supervisor 监听代码自动重启nodejs"></a>supervisor 监听代码自动重启nodejs</h2><p><strong> 安装supervisor npm install supervisor -g</strong><br><strong> 用supervisor代替node supervisor app.js</strong><br><strong>  supervisor会帮我们自动监视代码,如果被修改则会自动重启node</strong></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-zard的前端历险记" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/12/15/zard的前端历险记/" class="article-date">
+      <time datetime="2017-12-15T15:29:15.000Z" itemprop="datePublished">2017-12-15</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/15/zard的前端历险记/">zardluan的前端历险记</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>记录前端菜鸟的成神之路<br></p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂文/">杂文</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2017/12/15/zard的前端历险记/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Vue-router" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -352,265 +632,9 @@
 
 
   
-    <article id="post-angular1" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/11/25/angular1/" class="article-date">
-      <time datetime="2017-11-25T01:05:09.000Z" itemprop="datePublished">2017-11-25</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/25/angular1/">Angular自学笔记</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>angular<br></p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular/">angular</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2017/11/25/angular1/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Vue之组件通信" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/09/20/Vue之组件通信/" class="article-date">
-      <time datetime="2017-09-20T13:01:29.000Z" itemprop="datePublished">2017-09-20</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/20/Vue之组件通信/">Vue之组件通信</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p></p><p style="color:red">关于Vue中组件之间的通信</p><br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2017/09/20/Vue之组件通信/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-vue虾米实战" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/09/12/vue虾米实战/" class="article-date">
-      <time datetime="2017-09-12T12:10:33.000Z" itemprop="datePublished">2017-09-12</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/12/vue虾米实战/">vue虾米实战</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><img src="/2017/09/12/vue虾米实战/logo.png" alt=""><br><strong> 一个高仿虾米网页端! </strong><br>项目地址:<a href="http://www.zardluan.cn/xiami/" target="_blank" rel="noopener">http://www.zardluan.cn/xiami/</a><br></p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2017/09/12/vue虾米实战/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-VueResource踩坑记" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/09/12/VueResource踩坑记/" class="article-date">
-      <time datetime="2017-09-11T16:43:54.000Z" itemprop="datePublished">2017-09-12</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/12/VueResource踩坑记/">VueResource踩坑记</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>VueResource<br></p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2017/09/12/VueResource踩坑记/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 </div>
@@ -619,7 +643,7 @@
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i> 
-                2016-2017 栾皓琛
+                2016-2018 栾皓琛
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>

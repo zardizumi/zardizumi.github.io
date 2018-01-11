@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="栾皓琛" />
+
+
+
+<meta name="description" content="记录前端菜鸟的成神之路">
+<meta name="keywords" content="杂文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="zardluan的前端历险记">
+<meta property="og:url" content="https://zardizumi.github.io/2017/12/15/zard的前端历险记/index.html">
+<meta property="og:site_name" content="栾皓琛的个人博客">
+<meta property="og:description" content="记录前端菜鸟的成神之路">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-17T13:35:54.950Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="zardluan的前端历险记">
+<meta name="twitter:description" content="记录前端菜鸟的成神之路">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="栾皓琛的个人博客" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/ico.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>zardluan的前端历险记 | 栾皓琛的个人博客</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?5813ee6baecd0176df8eb6102c701f49";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.gif" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">栾皓琛</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">每天都是新一天</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="/1092751647@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/zardizumi" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂文/">杂文</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://github.com/zardizumi">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://juejin.im/">掘金</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://www.csdn.net/">CSDN</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">栾皓琛</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.gif" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">栾皓琛</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">每天都是新一天</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="/1092751647@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/zardizumi" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-zard的前端历险记" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/12/15/zard的前端历险记/" class="article-date">
+      <time datetime="2017-12-15T15:29:15.000Z" itemprop="datePublished">2017-12-15</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      zardluan的前端历险记
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂文/">杂文</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>记录前端菜鸟的成神之路<br><a id="more"></a></p>
+<h1 id="Day-1"><a href="#Day-1" class="headerlink" title="Day 1"></a>Day 1</h1><p>地点:北京<br>日期:2017-12-14</p>
+<p>初来某部队,才知道部队需要开发一款酷炫的Web应用,第一天一直在看之前的前端的代码,这才知道,看别人写的代码才是最痛苦的.幸好我对Vue还是十分熟练的,况且前人的代码还算是很规范,缩进,变量,方法声明都很规整,读起来并不痛苦.</p><br><p>来这里第一天主要还是熟悉开发环境.吐槽一下,这里的开发环境十分不舒服,不能上网=无法百度,不能带自己的电脑进去=没有插件的编辑器、没有API文档看,没有node环境=不能用npm安装插件、想用的库要回宾馆刻在光盘里才能拿进去…</p><br><p>这里的开发语言,C++,Java再加上前端.C++负责底层,Java负责数据库,前端只需要负责写好静态页面和页面上的交互就好了,并且与写Java配合进行数据增删查改.和我配合的Java老哥性格很棒,我只要写好页面,写好Ajax,直接发给他,他直接在他自己的机子上测试,省事!</p><br><p>这里使用的前端技术:Vue、JQuery、element、以及原生JS,我接触了原来从来没用过的Echart,ztree.</p><br><p>总结:第一天在看代码,看文档,看Echart和ztree中度过.</p>
+
+<p>#Day 2<br>地点:北京<br>日期:2017-12-15</p>
+<p>今天被告知我们的部分也要开始动手了,页面用element配合Vue直接快速生成,直接将Vue实例与element的组件绑定,提高开发速度.因为没有node环境,所以不能用写组件的形式去搭建页面,只能在js文件中直接写Vue实例.开发总体是没有什么难度的,关键是第二天全天我都没有拿到最后要实现的效果图!对方说就按照已经现存的系统界面直接模仿,但是还有奇怪的需求,总之,需求是无穷无尽的!</p><br><p>下午,对方说要一个在线编辑生成思维导图的小程序,果然这个锅只能丢到我和Java兄弟头上了.不过这个功能倒是没有难度,用jsMind就能实现,jsMind是一个用于生成思维导图的js库傻瓜式操作.为了开发速度,我们直接将自带的示例整个搬了过来,把按钮改成中文,提示改成中文,无意义的功能直接删除,按钮直接用bootstrap自带的,将自带的本地保存改成了发送ajax导入数据库,将打开文件改成了ajax请求get数据库的数据,再在页面生成对应的导图.速成了一个在线编辑思维导图的小程序.</p><br><p>总结:今天项目依旧没有开动,不过学到了jsMind的用法,实现了一个功能,算是有点收获.</p>
+
+<p>#Day3<br>地点:北京<br>日期:2017-12-16</p>
+<p>逐渐适应了节奏,感觉没有什么难度,唯一让人不太适应的就是要学习很多没用过的js库,而且之前最多就是与php后端进行配合,现在与我配合的是一个java后台,不过与php也没什么区别,调接口就完事了.</p><br><p>今天把基于jsmind实现的在线生成思维导图的程序给部署在对方的服务器上了,然后下午就是再看ztree,orgChart,还要将代码放到Tomcat上面跑.这些都是之前没用过的.</p><br><p>晚上老大请吃饭,不加班,美滋滋.</p><br>#Day4<br>地点:北京<br>日期:2017-12-16<br><p>今天正式开工了,上面给我的自由度很高,只给了一张最终效果图,和切好的图片,其他的自由发挥,用什么技术,怎么实现自己决定.不过我们几个前端为了方便开发,统一了技术,vue组件开发.将页面上每一个模块分成一个组件,写在单独的一个js文件中,css也分离出来.</p><br><p>为了形成良好的代码风格,我一个模块一注释,一个方法一注释,一段css一注释,确保别人看,和自己后期看代码能看得很明白</p><br><p>今天一天就是在写组件,没什么难度,晚上还不用加班,美滋滋.</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/12/15/zard的前端历险记/">zardluan的前端历险记</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">栾皓琛</a></p>
+        <p><span>发布时间:</span>2017-12-15, 23:29:15</p>
+        <p><span>最后更新:</span>2017-12-17, 21:35:54</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/12/15/zard的前端历险记/" title="zardluan的前端历险记">https://zardizumi.github.io/2017/12/15/zard的前端历险记/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://zardizumi.github.io/2017/12/15/zard的前端历险记/　　作者: 栾皓琛" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/12/16/nodejs从零开始/">
+                    nodejs从零开始
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/12/10/Vue-router/">
+                    Vue-router
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Day-1"><span class="toc-number">1.</span> <span class="toc-text">Day 1</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"zardluan的前端历险记　| 栾皓琛的个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+        <section class="youyan" id="comments">
+    <script>
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = 'http://v2.uyan.cc/code/uyan.js?uid=2149780';
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+    
+    <script> loadComment(); </script>
+
+    <div id="uyan_frame"></div>
+</section>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/12/16/nodejs从零开始/" title="上一篇: nodejs从零开始">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/12/10/Vue-router/" title="下一篇: Vue-router">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/01/05/koa/">koa</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/19/python从零开始/">python从零开始</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/16/nodejs从零开始/">nodejs从零开始</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/15/zard的前端历险记/">zardluan的前端历险记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/10/Vue-router/">Vue-router</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/25/angular1/">Angular自学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/20/Vue之组件通信/">Vue之组件通信</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/12/vue虾米实战/">vue虾米实战</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/12/VueResource踩坑记/">VueResource踩坑记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/04/Vue学习笔记/">从零开始学习Vue</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/四款移动插件用法/">四款移动开发中的插件的用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/28/php自学/">PHP</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/20/事件委托/">事件委托</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/10/ES6学习笔记/">ES6学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/一些总结的小坑/">一些总结的小坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/10/require-js/">Require.js</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/20/gulp/">gulp</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/17/git/">git</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2018 栾皓琛
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
