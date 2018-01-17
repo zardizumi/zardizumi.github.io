@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="栾皓琛" />
+
+
+
+<meta name="description" content="Vue学完,学习一下React">
+<meta name="keywords" content="react">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从零开始学习React">
+<meta property="og:url" content="https://zardizumi.github.io/2018/01/11/React基础/index.html">
+<meta property="og:site_name" content="栾皓琛的个人博客">
+<meta property="og:description" content="Vue学完,学习一下React">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-17T17:18:32.112Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从零开始学习React">
+<meta name="twitter:description" content="Vue学完,学习一下React">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="栾皓琛的个人博客" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/ico.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>从零开始学习React | 栾皓琛的个人博客</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?5813ee6baecd0176df8eb6102c701f49";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.gif" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">栾皓琛</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">每天都是新一天</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="/1092751647@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/zardizumi" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂文/">杂文</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://github.com/zardizumi">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://juejin.im/">掘金</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://www.csdn.net/">CSDN</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">栾皓琛</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.gif" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">栾皓琛</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">每天都是新一天</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="/1092751647@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/zardizumi" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-React基础" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/01/11/React基础/" class="article-date">
+      <time datetime="2018-01-11T15:51:29.000Z" itemprop="datePublished">2018-01-11</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      从零开始学习React
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>Vue学完,学习一下React<br><a id="more"></a></p>
+<h1 id="React"><a href="#React" class="headerlink" title="React"></a>React</h1><h2 id="hello-world"><a href="#hello-world" class="headerlink" title="hello world"></a>hello world</h2><p><strong>react主要就是通过创建组件,组件渲染来实现逻辑</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"reactContainer"</span>&gt;&lt;/div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">    <span class="comment">//使用React.createClass()方法创建组件</span></span><br><span class="line">        <span class="keyword">var</span> HelloComponent = React.createClass(&#123;</span><br><span class="line">            render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> React.createElement(<span class="string">'h1'</span>, <span class="literal">null</span>, <span class="string">'Hello world'</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    <span class="comment">//使用React.render()方法将组件渲染进页面中存在的元素</span></span><br><span class="line">        ReactDOM.render(</span><br><span class="line">            React.createElement(HelloComponent, <span class="literal">null</span>),</span><br><span class="line">            <span class="built_in">document</span>.getElementById(<span class="string">'reactContainer'</span>)</span><br><span class="line">        )</span><br><span class="line">    &lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="JSX语法"><a href="#JSX语法" class="headerlink" title="JSX语法"></a>JSX语法</h2><p><strong>JSX语法就是javascript XML</strong></p>
+<p>###使用browser.js改写<br><strong>使用babel的核心browser.js改写的话,我们可以直接使用jsx语法来创建虚拟DOM</strong><br><strong>JSX语法接受表达式 使用{}来包含表达式,可以使用三元运算符,不能使用if else</strong><br>下面的例子,如果helloComponent组件存在name属性则显示name否则显示123<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/babel"</span>&gt;</span><br><span class="line">    <span class="keyword">var</span> HelloComponent =React.createClass(&#123; </span><br><span class="line">        render:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line">            <span class="keyword">return</span> &lt;h1&gt;Hello World &#123;this.props?this.props.name:"123 "&#125;&lt;/h1&gt;; &#125; &#125;); </span><br><span class="line">            ReactDOM.render(&lt;HelloComponent name='luan'/&gt;, document.getElementById('reactContainer') )</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>###JSX语法中的数组循环</p>
+<p>####普通数组在组件中遍历</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">'text/babel'</span>&gt;</span><br><span class="line">    <span class="keyword">let</span> names = [<span class="string">'james'</span>,<span class="string">'luan'</span>,<span class="string">'wade'</span>];</span><br><span class="line">    <span class="keyword">let</span> helloComponent = React.createClass(&#123;</span><br><span class="line">        render:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> &lt;div&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    names.map((name)=&gt;&#123;</span><br><span class="line">                        return &lt;div key='name'&gt;</span><br><span class="line">                            &#123;name&#125;</span><br><span class="line">                        &lt;/div&gt;</span><br><span class="line">                    &#125;)</span><br><span class="line">                &#125;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    ReactDom.render(&lt;helloComponent/&gt;,<span class="built_in">document</span>.getElementById(<span class="string">'reactContainer'</span>))</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p>####直接在数组中使用JSX语法遍历数组<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">'text/babel'</span>&gt;</span><br><span class="line">    <span class="keyword">let</span> names = [</span><br><span class="line">        &lt;h1&gt;hello wade&lt;<span class="regexp">/h1&gt;,</span></span><br><span class="line"><span class="regexp">        &lt;h2&gt;hello james&lt;/</span>h2&gt;,</span><br><span class="line">        &lt;h3&gt;hello blank&lt;<span class="regexp">/h3&gt;</span></span><br><span class="line"><span class="regexp">    ]</span></span><br><span class="line"><span class="regexp">    ReactDom.render(&#123;</span></span><br><span class="line"><span class="regexp">        &lt;div&gt;&#123;arr&#125;&lt;/</span>div&gt;,</span><br><span class="line">        <span class="built_in">document</span>.getElementById(<span class="string">'reactContainer'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>##React组件<br><strong>React组件可以看做是一个带有state状态集合,props属性集合,并且构造出一个虚拟DOM的对象</strong></p>
+<p>###state状态<br><strong>state状态由数据驱动,根据不同的状态渲染不同的界面,每一个组件都可以被当做一个状态机,根据状态不同呈现不同的样子</strong><br><strong>下面的例子,当点击按钮时,将文本框的类型状态改变成多选框,并切换启用状态</strong></p>
+<p>####getInitialState()方法<br><strong>该方法用于初始化组件的状态,必须有返回值,至少写个return,return 的表达式用{}包裹,里面设置组件的一些状态</strong></p>
+<p>####事件处理函数<br><strong>事件处理函数可以用于改变组件的状态,语法setState(改变的状态对象),通过组件的事件触发时.组件的事件使用驼峰命名法,比如onClick,onMouseout等等,因为JSX严格区分大小写</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> TextBoxComponent = React.createClass(&#123;</span><br><span class="line">     render:<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">         <span class="comment">//使用JSX语法写,必须用()包含html代码,其中&#123;&#125;中的表达式不要带双引号</span></span><br><span class="line">         <span class="keyword">return</span> (</span><br><span class="line">             &lt;p&gt;</span><br><span class="line">               &lt;input type=&#123;<span class="keyword">this</span>.state.type&#125; disabled=&#123;<span class="keyword">this</span>.state.enable&#125;&gt;&lt;/input&gt;</span><br><span class="line">               &lt;button onClick=&#123;<span class="keyword">this</span>.handleClick&#125;&gt;改变textbox状态&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">             &lt;/</span>p&gt;</span><br><span class="line">         )</span><br><span class="line">     &#125;,</span><br><span class="line">     <span class="comment">//初始化状态,必须有返回值,至少要有个return</span></span><br><span class="line">     getInitialState:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">         <span class="keyword">return</span> &#123;<span class="attr">enable</span>:<span class="literal">false</span>,<span class="attr">type</span>:<span class="string">'text'</span>&#125;;</span><br><span class="line">     &#125;,</span><br><span class="line">     <span class="comment">//处理函数,当点击按钮按钮时改变文本框的状态</span></span><br><span class="line">     handleClick:<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">         <span class="comment">//当数据改变时重新渲染界面</span></span><br><span class="line">         <span class="keyword">this</span>.setState(&#123;<span class="attr">enable</span>:!<span class="keyword">this</span>.state.enable,<span class="attr">type</span>:<span class="string">'checkbox'</span>&#125;)</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;)</span><br><span class="line"> ReactDOM.render(&lt;TextBoxComponent/&gt;,<span class="built_in">document</span>.getElementById(<span class="string">'reactContainer'</span>));</span><br></pre></td></tr></table></figure></p>
+<p>getInitialState()必须有返回值,在JSX语法中使用{}表达式不要加双引号.onClick 必须大写</p>
+<p>###props<br>props是组件的固有属性的集合<br><strong>什么时候使用props呢?当我们不准备对这个属性进行改变的时候就使用props进行传值,否则可以使用state,因为props一般是只读的</strong></p>
+<p>###render<br><strong>render是一个函数,在创建组件时必须存在,用于检测属性状态,并返回组件实例.</strong><br><strong>render函数应该是纯粹的，也就是说，在render函数内不应该修改组件state，不读写DOM信息，也不与浏览器交互。如果需要交互，应该在生命周期中进行交互。</strong></p>
+<p>##生命周期(钩子函数)<br><strong>即react组件在不同的时期会触发不同的生命周期函数</strong></p>
+<p>###挂载阶段mounting<br>componentWillMount()<br>componentdidMount()</p>
+<p>###更新阶段updating<br>componentWillUpdate()<br>componentdidUpdate()</p>
+<p>###销毁阶段unmouting<br>componentWillUnMount() </p>
+<p>//一个加法运算例子<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/babel"</span>&gt;</span><br><span class="line"><span class="keyword">let</span> Add = React.createClass(&#123;</span><br><span class="line">    getInitialState:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"初始化状态"</span>);</span><br><span class="line">        <span class="keyword">return</span> &#123;<span class="attr">count</span>:<span class="number">1</span>&#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    componentWillMount:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'组件将要挂载'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    componentDidMount:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'组件已经挂载'</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    componentWillUpdating:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'组件正要被重新渲染'</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    componentDidUpdate:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'组件被重新渲染完成'</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    handClick:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123;<span class="attr">count</span>:<span class="keyword">this</span>.state.count+<span class="number">1</span>&#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    render:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &#123;<span class="keyword">this</span>.state.count&#125;&lt;br/&gt;</span><br><span class="line">                &lt;button onClick=&#123;<span class="keyword">this</span>.handClick&#125;&gt;Add&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>div&gt;</span><br><span class="line">            )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">ReactDOM.render(&lt;Add/&gt;,<span class="built_in">document</span>.getElementById(<span class="string">'reactContainer'</span>));</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="props和state的综合案例"><a href="#props和state的综合案例" class="headerlink" title="props和state的综合案例"></a>props和state的综合案例</h3><p><strong>实现一个文字闪烁效果</strong><br>1.通过改变透明度实现,透明度是状态,因为要改变<br>2.通过setInterval方法实现每隔100ms改变一次透明度<br>3.当透明度为0.1时重新为其赋值为1,以此循环<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/babel"</span>&gt;</span><br><span class="line">    <span class="keyword">var</span> Hello = React.createClass(&#123;</span><br><span class="line">        getInitialState:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;<span class="attr">opacity</span>:<span class="number">1.0</span>&#125;;</span><br><span class="line">        &#125;,</span><br><span class="line">         <span class="comment">//style中传入的是一个对象!!!</span></span><br><span class="line">        render:<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> (</span><br><span class="line">                &lt;div style=&#123;&#123;<span class="attr">opacity</span>:<span class="keyword">this</span>.state.opacity&#125;&#125;&gt;</span><br><span class="line">                    &lt;h1&gt;hello&#123;<span class="keyword">this</span>.props.name&#125;&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">                &lt;/</span>div&gt;</span><br><span class="line">            )</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="comment">//当组件挂载之后开始闪烁</span></span><br><span class="line">        componentDidMount:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                <span class="keyword">var</span> opacity = <span class="keyword">this</span>.state.opacity;</span><br><span class="line">                opacity -= <span class="number">0.05</span>;</span><br><span class="line">                <span class="keyword">if</span>(opacity &lt;<span class="number">0.1</span>) &#123;</span><br><span class="line">                    opacity = <span class="number">1.0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">                    opacity:opacity</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;.bind(<span class="keyword">this</span>),<span class="number">100</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    ReactDOM.render(&lt;Hello name='栾皓琛'/&gt;,document.getElementById('reactContainer'));</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>##this.props.children<br><strong>this.props.children表示组件的所有子节点</strong></p>
+<p></p><p style="font-weight:700;color:red">坑!:React.Children的Children必须大写!渲染的时候因为不是单标签了所以要闭合组件标签!</p><p></p>
+<p></p><p style="font-weight:700;color:red">如果当前组件没有子节点则this.props.children返回undefined,如果有一个则返回Object,大于1个则返回Array</p><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">'text/babel'</span>&gt;</span><br><span class="line">    <span class="keyword">let</span> NodeList = React.createClass(&#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;ol&gt;</span><br><span class="line">                &#123;React.Children.map(<span class="keyword">this</span>.props.children,<span class="function"><span class="keyword">function</span>(<span class="params">child</span>)</span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> &lt;li&gt;&#123;child&#125;&lt;/li&gt;;</span><br><span class="line">                &#125;)&#125;</span><br><span class="line">            &lt;<span class="regexp">/ol&gt;</span></span><br><span class="line"><span class="regexp">        )</span></span><br><span class="line"><span class="regexp">    &#125;)</span></span><br><span class="line"><span class="regexp">    ReactDOM.render(&lt;NodeList&gt;</span></span><br><span class="line"><span class="regexp">        &lt;span&gt;luan&lt;/</span>span&gt;</span><br><span class="line">        &lt;span&gt;hao&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">        &lt;span&gt;chen&lt;/</span>span&gt;</span><br><span class="line">    &lt;<span class="regexp">/NodeList&gt;,document.getElementById('container'));</span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure><p></p>
+<p>##props验证和组件属性默认值<br><strong>react引入了propTypess机制,可以验证传入的属性是否符合标准,有效</strong><br><strong>propTypes是一个对象,在里面定义各属性的验证规则.</strong><br><strong>getDefaultProps为一个函数,返回各属性的默认值.</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">'text/babel'</span>&gt;</span><br><span class="line">    <span class="keyword">let</span> Hello = React.createClass(&#123;</span><br><span class="line">        render:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> &lt;h1&gt;&#123;this.props.title&#125;&lt;/h1&gt;;</span><br><span class="line">        &#125;,</span><br><span class="line">        propTypes:&#123;</span><br><span class="line">            title:React.PropTypes.string.isRequired</span><br><span class="line">        &#125;,</span><br><span class="line">        getDefaultProps:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;<span class="attr">title</span>:<span class="string">"Luan"</span>&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/01/11/React基础/">从零开始学习React</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">栾皓琛</a></p>
+        <p><span>发布时间:</span>2018-01-11, 23:51:29</p>
+        <p><span>最后更新:</span>2018-01-18, 01:18:32</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/01/11/React基础/" title="从零开始学习React">https://zardizumi.github.io/2018/01/11/React基础/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://zardizumi.github.io/2018/01/11/React基础/　　作者: 栾皓琛" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/01/05/koa/">
+                    koa
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#React"><span class="toc-number">1.</span> <span class="toc-text">React</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#hello-world"><span class="toc-number">1.1.</span> <span class="toc-text">hello world</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JSX语法"><span class="toc-number">1.2.</span> <span class="toc-text">JSX语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#props和state的综合案例"><span class="toc-number">1.2.1.</span> <span class="toc-text">props和state的综合案例</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"从零开始学习React　| 栾皓琛的个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+        <section class="youyan" id="comments">
+    <script>
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = 'http://v2.uyan.cc/code/uyan.js?uid=2149780';
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+    
+    <script> loadComment(); </script>
+
+    <div id="uyan_frame"></div>
+</section>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/01/05/koa/" title="下一篇: koa">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/01/11/React基础/">从零开始学习React</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/05/koa/">koa</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/19/python从零开始/">python从零开始</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/16/nodejs从零开始/">nodejs从零开始</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/15/zard的前端历险记/">zardluan的前端历险记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/10/Vue-router/">Vue-router</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/25/angular1/">Angular自学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/20/Vue之组件通信/">Vue之组件通信</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/12/vue虾米实战/">vue虾米实战</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/12/VueResource踩坑记/">VueResource踩坑记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/04/Vue学习笔记/">从零开始学习Vue</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/四款移动插件用法/">四款移动开发中的插件的用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/28/php自学/">PHP</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/20/事件委托/">事件委托</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/10/ES6学习笔记/">ES6学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/一些总结的小坑/">一些总结的小坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/10/require-js/">Require.js</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/20/gulp/">gulp</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/17/git/">git</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2018 栾皓琛
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
