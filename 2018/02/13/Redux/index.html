@@ -15,17 +15,17 @@
 
 
 
-<meta name="description" content="前端模块化避免全局变量的污染,加载过多的js文件.我们使用Require.js进行模块化开发. 注意:所有的路径名中的文件都不要带后缀,比如.js  定义一个模块 define 在module.js中通过define定义模块 123456	define(function() &amp;#123;	function fo">
+<meta name="description" content="心有猛虎,细嗅蔷薇">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Require.js">
-<meta property="og:url" content="https://zardizumi.github.io/2016/09/10/require-js/index.html">
+<meta property="og:title" content="Redux">
+<meta property="og:url" content="https://zardizumi.github.io/2018/02/13/Redux/index.html">
 <meta property="og:site_name" content="栾皓琛的个人博客">
-<meta property="og:description" content="前端模块化避免全局变量的污染,加载过多的js文件.我们使用Require.js进行模块化开发. 注意:所有的路径名中的文件都不要带后缀,比如.js  定义一个模块 define 在module.js中通过define定义模块 123456	define(function() &amp;#123;	function foo() &amp;#123;		console.log(123);	&amp;#125;	foo();">
+<meta property="og:description" content="心有猛虎,细嗅蔷薇">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-10T15:41:45.948Z">
+<meta property="og:updated_time" content="2018-02-13T13:40:50.457Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Require.js">
-<meta name="twitter:description" content="前端模块化避免全局变量的污染,加载过多的js文件.我们使用Require.js进行模块化开发. 注意:所有的路径名中的文件都不要带后缀,比如.js  定义一个模块 define 在module.js中通过define定义模块 123456	define(function() &amp;#123;	function foo() &amp;#123;		console.log(123);	&amp;#125;	foo();">
+<meta name="twitter:title" content="Redux">
+<meta name="twitter:description" content="心有猛虎,细嗅蔷薇">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -57,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Require.js | 栾皓琛的个人博客</title>
+<title>Redux | 栾皓琛的个人博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -280,11 +280,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-require-js" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Redux" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/09/10/require-js/" class="article-date">
-      <time datetime="2016-09-10T02:45:35.000Z" itemprop="datePublished">2016-09-10</time>
+      <a href="/2018/02/13/Redux/" class="article-date">
+      <time datetime="2018-02-13T13:40:50.000Z" itemprop="datePublished">2018-02-13</time>
 </a>
 
 
@@ -299,7 +299,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Require.js
+      Redux
     </h1>
   
 
@@ -316,20 +316,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <a id="more"></a>
-<h2 id="前端模块化"><a href="#前端模块化" class="headerlink" title="前端模块化"></a>前端模块化</h2><p>避免全局变量的污染,加载过多的js文件.我们使用Require.js进行模块化开发.</p>
-<p style="font-size: 30px;color:red">注意:所有的路径名中的文件都不要带后缀,比如.js</p>
-
-<h2 id="定义一个模块-define"><a href="#定义一个模块-define" class="headerlink" title="定义一个模块 define"></a>定义一个模块 define</h2><p><strong> 在module.js中通过define定义模块 </strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">	define(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="number">123</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	foo();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<h2 id="引入一个模块-require"><a href="#引入一个模块-require" class="headerlink" title="引入一个模块 require"></a>引入一个模块 require</h2><p>因为模块和html文件在同一目录,所以直接通过文件名引入<br><strong style="color:red">require接收两个参数,第一个必须是一个数组,将模块名传入,第二个是引入模块成功后执行的回调函数</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;https://cdn.bootcss.com/require.js/2.3.5/require.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">require([&apos;module&apos;],function()&#123;&#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
-<h2 id="配置baseUrl"><a href="#配置baseUrl" class="headerlink" title="配置baseUrl"></a>配置baseUrl</h2><p><strong> require({baseUrl:’’}) </strong><br>baseUrl用来配置模块的基本查找路径.如果不配置,那么默认是在引入了require.js的这个html文件的当前目录下查找.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>([<span class="string">'a'</span>]) <span class="comment">//在当前目录下找a.js</span></span><br><span class="line"></span><br><span class="line">------------------------------</span><br><span class="line">requir.econfig(&#123;</span><br><span class="line">	baseUrl:<span class="string">'js'</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">require</span>([<span class="string">'a'</span>]) <span class="comment">//在js文件夹下查找a.js</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="加载外部的文件"><a href="#加载外部的文件" class="headerlink" title="加载外部的文件"></a>加载外部的文件</h2><p>###配置短名字</p>
-<p>如果从外部引入文件的话,会出现很长的路径名,这时候我们需要配置短名字,并且可以配置多个路径,如果前一个加载不成功就加载后一个,依次加载.</p>
-<p><strong> 使用require.config({path:{}}) 配置短名字</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>.config(&#123;</span><br><span class="line">	path:&#123;</span><br><span class="line">		jquery:[<span class="string">'http://libs.baidu.com/jquery/2.0.3/jquery'</span>,<span class="string">'js/jquery'</span>]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">require</span>([<span class="string">'jquery'</span>],<span class="function"><span class="keyword">function</span>(<span class="params">$</span>)</span>&#123;&#125;)</span><br></pre></td></tr></table></figure>
-<h3 id="回调函数的参数"><a href="#回调函数的参数" class="headerlink" title="回调函数的参数"></a>回调函数的参数</h3><p>模块加载完的回调函数可以传入参数,这个参数是你回调函数中要从加载模块中依赖的东西,比如加载了jQuery,你就要依赖$来使用jquery的方法</p>
-<h2 id="加载第三方模块-shim-垫"><a href="#加载第三方模块-shim-垫" class="headerlink" title="加载第三方模块 shim 垫"></a>加载第三方模块 shim 垫</h2><p>有些模块不符合AMD规范,比如jQuery的表单插件,所以我们就要将该插件’垫’到jQuery中</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>.config(&#123;</span><br><span class="line">	shim:&#123;</span><br><span class="line">		<span class="string">'jquery.from'</span>:[<span class="string">'jquery'</span>]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">requrie([<span class="string">'jquery'</span>,<span class="string">'jquery.form'</span>],<span class="function"><span class="keyword">function</span>(<span class="params">$</span>)</span>&#123;</span><br><span class="line">	$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">       	$(<span class="string">"#form"</span>).ajaxSubmit(&#123;...&#125;);</span><br><span class="line">   	&#125;)</span><br><span class="line">&#125;) <span class="comment">//被依赖的写在前面</span></span><br></pre></td></tr></table></figure>
+        
       
     </div>
     
@@ -337,13 +324,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/09/10/require-js/">Require.js</a></p>
+        <p><span>本文标题:</span><a href="/2018/02/13/Redux/">Redux</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">栾皓琛</a></p>
-        <p><span>发布时间:</span>2016-09-10, 10:45:35</p>
-        <p><span>最后更新:</span>2017-12-10, 23:41:45</p>
+        <p><span>发布时间:</span>2018-02-13, 21:40:50</p>
+        <p><span>最后更新:</span>2018-02-13, 21:40:50</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/09/10/require-js/" title="Require.js">https://zardizumi.github.io/2016/09/10/require-js/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://zardizumi.github.io/2016/09/10/require-js/　　作者: 栾皓琛" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/02/13/Redux/" title="Redux">https://zardizumi.github.io/2018/02/13/Redux/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://zardizumi.github.io/2018/02/13/Redux/　　作者: 栾皓琛" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -355,16 +342,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/12/20/一些总结的小坑/">
-                    一些总结的小坑
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/04/20/gulp/">
-                    gulp
+                <a href="/2018/01/29/MongoDB笔记/">
+                    MongoDB笔记
                 </a>
             </div>
         
@@ -376,7 +357,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前端模块化"><span class="toc-number">1.</span> <span class="toc-text">前端模块化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定义一个模块-define"><span class="toc-number">2.</span> <span class="toc-text">定义一个模块 define</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引入一个模块-require"><span class="toc-number">3.</span> <span class="toc-text">引入一个模块 require</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置baseUrl"><span class="toc-number">4.</span> <span class="toc-text">配置baseUrl</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#加载外部的文件"><span class="toc-number">5.</span> <span class="toc-text">加载外部的文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#回调函数的参数"><span class="toc-number">5.1.</span> <span class="toc-text">回调函数的参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#加载第三方模块-shim-垫"><span class="toc-number">6.</span> <span class="toc-text">加载第三方模块 shim 垫</span></a></li></ol>
+            
         
     </div>
     <style>
@@ -412,7 +393,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Require.js　| 栾皓琛的个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Redux　| 栾皓琛的个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -446,15 +427,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/12/20/一些总结的小坑/" title="上一篇: 一些总结的小坑">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/04/20/gulp/" title="下一篇: gulp">
+            <a href="/2018/01/29/MongoDB笔记/" title="下一篇: MongoDB笔记">
                 <i class="fa fa-angle-right"></i>
             </a>
         
