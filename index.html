@@ -209,7 +209,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">-- express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/">-- mongodb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">-- vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redux/">redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">-- express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/">-- mongodb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodeJs/">-- nodeJs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">-- vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">-- webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redux/">redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
                     </div>
                 </section>
                 
@@ -288,6 +288,76 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-使用nodeJs进行后台接口的开发" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/04/06/使用nodeJs进行后台接口的开发/" class="article-date">
+      <time datetime="2018-04-06T14:46:43.000Z" itemprop="datePublished">2018-04-06</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/06/使用nodeJs进行后台接口的开发/">使用nodeJs进行后台接口的开发</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="基于express进行后台接口开发"><a href="#基于express进行后台接口开发" class="headerlink" title="基于express进行后台接口开发"></a>基于express进行后台接口开发</h2><h3 id="返回json格式的数据"><a href="#返回json格式的数据" class="headerlink" title="返回json格式的数据"></a>返回json格式的数据</h3><p><strong>使用res.json(需要返回的数据),并基于mysql数据库进行操作</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"><span class="keyword">const</span> db = <span class="built_in">require</span>(<span class="string">'./db'</span>)</span><br><span class="line"><span class="comment">// allBooks</span></span><br><span class="line">app.get(<span class="string">'/allBooks'</span>,(req,res)=&gt;&#123;</span><br><span class="line">    <span class="keyword">let</span> sql = <span class="string">'select * from book'</span>;</span><br><span class="line">    db.base(sql,<span class="literal">null</span>,(result)=&gt;&#123;</span><br><span class="line">        res.json(result);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>,()=&gt;&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'running'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="jsonp形式"><a href="#jsonp形式" class="headerlink" title="jsonp形式"></a>jsonp形式</h3><p><strong>使用res.jsop(返回数据)，键名默认是callback</strong><br><strong>通过app.set(‘jsonp callback name’,键名)来设置其他的callback键名</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">'/allBooks'</span>, (req, res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> sql = <span class="string">'select * from book'</span>;</span><br><span class="line">    db.base(sql, <span class="literal">null</span>, (result) =&gt; &#123;</span><br><span class="line">        res.jsonp(result);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//使用 /allBooks?callback=foo进行调用</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="restful-api"><a href="#restful-api" class="headerlink" title="restful api"></a>restful api</h2><p><strong>restful接口使一种依据url来表述接口的接口格式，即一个url对应一种资源.</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">get http:localhost:<span class="number">3000</span>/books 获取所有书</span><br><span class="line">get http:localhost:<span class="number">3000</span>/books/book添加书</span><br><span class="line">post  http:localhost:<span class="number">3000</span>/books/book添加书</span><br><span class="line">get   http:localhost:<span class="number">3000</span>/books/book/<span class="number">1</span> 编辑一本书</span><br><span class="line">put   http:localhost:<span class="number">3000</span>/books/book 提交编辑书</span><br><span class="line"><span class="keyword">delete</span> http:localhost:<span class="number">3000</span>/books/book/<span class="number">2</span> 删除一本书</span><br></pre></td></tr></table></figure>
+<h3 id="使用express实现restful接口"><a href="#使用express实现restful接口" class="headerlink" title="使用express实现restful接口"></a>使用express实现restful接口</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">'/books'</span>,(req,res)=&gt;&#123;</span><br><span class="line">    <span class="keyword">let</span> sql = <span class="string">'select * from book'</span>;</span><br><span class="line">    db.base(sql,<span class="literal">null</span>,(result)=&gt;&#123;</span><br><span class="line">        res.json(result);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/books/book/:id'</span>,(req,res)=&gt;&#123;</span><br><span class="line">    <span class="keyword">let</span> param = req.params.id;</span><br><span class="line">    <span class="built_in">console</span>.log(param);</span><br><span class="line">    <span class="keyword">let</span> sql = <span class="string">'select * from book where id=?'</span>;</span><br><span class="line">    <span class="keyword">let</span> data = [param];</span><br><span class="line">    db.base(sql, data,(result)=&gt;&#123;</span><br><span class="line">        res.json(result[<span class="number">0</span>])</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line">app.listen(<span class="number">3000</span>,()=&gt;&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'running'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="服务器向别的服务器发请求"><a href="#服务器向别的服务器发请求" class="headerlink" title="服务器向别的服务器发请求"></a>服务器向别的服务器发请求</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> options = &#123;</span><br><span class="line">    protocol: <span class="string">'http:'</span>,</span><br><span class="line">    hostname: <span class="string">"www.weather.com.cn"</span>,</span><br><span class="line">    port: <span class="number">80</span>,</span><br><span class="line">    path: <span class="string">"/data/sk/"</span> + cityCode + <span class="string">".html"</span>,</span><br><span class="line">    method: <span class="string">'get'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> req = http.request(options, (res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> info = <span class="string">""</span>;</span><br><span class="line">    res.on(<span class="string">'data'</span>, (chunk) =&gt; &#123;</span><br><span class="line">        info += chunk</span><br><span class="line">    &#125;)</span><br><span class="line">    res.on(<span class="string">'end'</span>, () =&gt; &#123;</span><br><span class="line">        callback(<span class="built_in">JSON</span>.parse(info))</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br><span class="line">req.end();</span><br></pre></td></tr></table></figure>
+<h2 id="使用express实现restful-api"><a href="#使用express实现restful-api" class="headerlink" title="使用express实现restful api"></a>使用express实现restful api</h2><h3 id="设置express路由，根据不同的路由进行不同的操作"><a href="#设置express路由，根据不同的路由进行不同的操作" class="headerlink" title="设置express路由，根据不同的路由进行不同的操作"></a>设置express路由，根据不同的路由进行不同的操作</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//提供所有图书信息的restful api</span></span><br><span class="line">router.get(<span class="string">'/books'</span>,service.allBooks);</span><br><span class="line"></span><br><span class="line"><span class="comment">//编辑图书时根据id查询响应的信息</span></span><br><span class="line">router.get(<span class="string">'/books/book/:id'</span>,service.getBookById);</span><br><span class="line"></span><br><span class="line"><span class="comment">//提交编辑的数据</span></span><br><span class="line"></span><br><span class="line">router.put(<span class="string">'/books/book'</span>,service.editBook);</span><br><span class="line"></span><br><span class="line"><span class="comment">//添加图书信息</span></span><br><span class="line"></span><br><span class="line">router.post(<span class="string">'/books/book'</span>,service.addBook)</span><br><span class="line"></span><br><span class="line"><span class="comment">//删除图书信息</span></span><br><span class="line"></span><br><span class="line">router.delete(<span class="string">'/books/book/:id'</span>,service.deleteBook);</span><br><span class="line"></span><br><span class="line"><span class="comment">//查询天气</span></span><br><span class="line"></span><br><span class="line">router.get(<span class="string">'/weather/:cityCode'</span>,service.queryWeather)</span><br></pre></td></tr></table></figure>
+<h3 id="数据库使用mysql，使用node-mysql包-进行数据库操作"><a href="#数据库使用mysql，使用node-mysql包-进行数据库操作" class="headerlink" title="数据库使用mysql，使用node mysql包,进行数据库操作"></a>数据库使用mysql，使用node mysql包,进行数据库操作</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">    exports.allBooks = <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> sql = <span class="string">'select * from book'</span>;</span><br><span class="line">        db.base(sql,<span class="literal">null</span>,(result)=&gt;&#123;</span><br><span class="line">            res.json(result);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">exports.editBook = <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> info = req.body;</span><br><span class="line">    <span class="keyword">let</span> sql = <span class="string">'update book set name=?,author=?,category=?,description=? where id=?'</span>;</span><br><span class="line">    <span class="keyword">let</span> data = [info.name, info.author, info.category, info.description, info.id];</span><br><span class="line">    db.base(sql, data, (result) =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (result.affectedRows == <span class="number">1</span>) &#123;</span><br><span class="line">            res.json(&#123;</span><br><span class="line">                msg: <span class="string">"编辑成功"</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            res.json(&#123;</span><br><span class="line">                msg: <span class="string">"编辑失败"</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line">exports.addBook = <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> info = req.body;</span><br><span class="line">    <span class="keyword">let</span> sql = <span class="string">'insert into book set ?'</span>;</span><br><span class="line">    db.base(sql, info, (result) =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (result.affectedRows == <span class="number">1</span>) &#123;</span><br><span class="line">            res.json(&#123;</span><br><span class="line">                msg: <span class="string">"添加成功"</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            res.json(&#123;</span><br><span class="line">                msg: <span class="string">"添加失败"</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;;</span><br><span class="line">exports.deleteBook = <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> id = req.params.id;</span><br><span class="line">    <span class="keyword">let</span> sql = <span class="string">'delete from book where id=?'</span>;</span><br><span class="line">    <span class="keyword">let</span> data = [id];</span><br><span class="line">    db.base(sql,data,(result)=&gt;&#123;</span><br><span class="line">        <span class="keyword">if</span> (result.affectedRows == <span class="number">1</span>) &#123;</span><br><span class="line">            res.json(&#123;</span><br><span class="line">                msg: <span class="string">"删除成功"</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            res.json(&#123;</span><br><span class="line">                msg: <span class="string">"删除失败"</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;;</span><br><span class="line">exports.getBookById = <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> id = req.params.id;</span><br><span class="line">    <span class="keyword">let</span> sql = <span class="string">'select * from book where id=?'</span>;</span><br><span class="line">    db.base(sql, id, (result) =&gt; &#123;</span><br><span class="line">        res.json(result[<span class="number">0</span>]);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">exports.queryWeather = <span class="function">(<span class="params">req,res</span>) =&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> cityCode = req.params.cityCode;</span><br><span class="line">    weather.queryWeather(cityCode,(data)=&gt;&#123;</span><br><span class="line">        res.json(data);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="可以在页面中通过ajax调用接口"><a href="#可以在页面中通过ajax调用接口" class="headerlink" title="可以在页面中通过ajax调用接口"></a>可以在页面中通过ajax调用接口</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    type: <span class="string">'put'</span>,</span><br><span class="line">    url: <span class="string">'/books/book'</span>,</span><br><span class="line">    data: &#123;</span><br><span class="line">        id:that.form.id,</span><br><span class="line">        name: that.form.name,</span><br><span class="line">        author: that.form.author,</span><br><span class="line">        category: that.form.category,</span><br><span class="line">        description: that.form.description</span><br><span class="line">    &#125;,</span><br><span class="line">    success: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">        that.editseen = <span class="literal">false</span>; </span><br><span class="line">        $.ajax(&#123;</span><br><span class="line">            type: <span class="string">'get'</span>,</span><br><span class="line">            url: <span class="string">'/books'</span>,</span><br><span class="line">            dataType: <span class="string">'json'</span>,</span><br><span class="line">            success: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">                that.tableData = data;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="使用node-http-request进行接口的二次封装"><a href="#使用node-http-request进行接口的二次封装" class="headerlink" title="使用node http.request进行接口的二次封装"></a>使用node http.request进行接口的二次封装</h2><p><strong>如果我们直接请求其他域名或端口下的api会产生跨域，所以使用http.request通过服务器进行请求，在对该请求进行二次封装就可以调用其他域的接口了</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//通过node请求其他域</span></span><br><span class="line">    <span class="keyword">let</span> options = &#123;</span><br><span class="line">            protocol: <span class="string">'http:'</span>,</span><br><span class="line">            hostname: <span class="string">"www.weather.com.cn"</span>,</span><br><span class="line">            port: <span class="number">80</span>,</span><br><span class="line">            path: <span class="string">"/data/sk/"</span> + cityCode + <span class="string">".html"</span>,</span><br><span class="line">            method: <span class="string">'get'</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> req = http.request(options, (res) =&gt; &#123;</span><br><span class="line">            <span class="keyword">let</span> info = <span class="string">""</span>;</span><br><span class="line">            res.on(<span class="string">'data'</span>, (chunk) =&gt; &#123;</span><br><span class="line">                info += chunk</span><br><span class="line">            &#125;)</span><br><span class="line">            res.on(<span class="string">'end'</span>, () =&gt; &#123;</span><br><span class="line">                callback(<span class="built_in">JSON</span>.parse(info))</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;);</span><br><span class="line">        req.end(); </span><br><span class="line">    <span class="comment">//对该接口进行二次封装</span></span><br><span class="line"></span><br><span class="line">    router.get(<span class="string">'/weather/:cityCode'</span>,service.queryWeather)</span><br><span class="line"></span><br><span class="line">    exports.queryWeather = <span class="function">(<span class="params">req,res</span>) =&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> cityCode = req.params.cityCode;</span><br><span class="line">        weather.queryWeather(cityCode,(data)=&gt;&#123;</span><br><span class="line">            res.json(data);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="superagent"><a href="#superagent" class="headerlink" title="superagent"></a>superagent</h2>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodeJs/">-- nodeJs</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-webpack从零开始" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -317,7 +387,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        
+        <a id="more"></a>
+<h2 id="入口文件"><a href="#入口文件" class="headerlink" title="入口文件"></a>入口文件</h2>
       
     </div>
     
@@ -326,6 +397,10 @@
       
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">-- webpack</a></li></ul>
+    </div>
+
       
       <div class="clearfix"></div>
     </div>
@@ -549,128 +624,6 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/express/">-- express</a></li></ul>
     </div>
 
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-preview/Vue学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/02/24/preview/Vue学习笔记/" class="article-date">
-      <time datetime="2018-02-24T15:04:34.037Z" itemprop="datePublished">2018-02-24</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <html>
-  <head>
-	  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <title>i5ting_ztree_toc:Vue学习笔记</title>
-		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css">
-		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css">
-		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css">
-	  <style>
-		pre {
-		    counter-reset: line-numbering;
-		    border: solid 1px #d9d9d9;
-		    border-radius: 0;
-		    background: #fff;
-		    padding: 0;
-		    line-height: 23px;
-		    margin-bottom: 30px;
-		    white-space: pre;
-		    overflow-x: auto;
-		    word-break: inherit;
-		    word-wrap: inherit;
-		}
-
-		pre a::before {
-		  content: counter(line-numbering);
-		  counter-increment: line-numbering;
-		  padding-right: 1em; /* space after numbers */
-		  width: 25px;
-		  text-align: right;
-		  opacity: 0.7;
-		  display: inline-block;
-		  color: #aaa;
-		  background: #eee;
-		  margin-right: 16px;
-		  padding: 2px 10px;
-		  font-size: 13px;
-		  -webkit-touch-callout: none;
-		  -webkit-user-select: none;
-		  -khtml-user-select: none;
-		  -moz-user-select: none;
-		  -ms-user-select: none;
-		  user-select: none;
-		}
-
-		pre a:first-of-type::before {
-		  padding-top: 10px;
-		}
-
-		pre a:last-of-type::before {
-		  padding-bottom: 10px;
-		}
-
-		pre a:only-of-type::before {
-		  padding: 10px;
-		}
-
-		.highlight { background-color: #ffffcc } /* RIGHT */
-		</style>
-  </head>
-  <body>
-	  <div>
-				<div style="width:25%;">
-						<ul id="tree" class="ztree" style="width:100%">
-
-						</ul>
-				</div>
-        <div id="readme" style="width:70%;margin-left:20%;">
-          	<article class="markdown-body">
-            	<hr>
-<p>title: 从零开始学习Vue
-date: 2017-9-4 09:17:21
-tags:</p>
-<pre><code> - vue
-</code></pre><hr>
-<p>记录我从零开始自学vue的过程,以及一些心得体会</p></article></div></div></body></html>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-        <p class="article-more-link">
-          <a href="/2018/02/24/preview/Vue学习笔记/#more">阅读全文 >></a>
-        </p>
       
       <div class="clearfix"></div>
     </div>

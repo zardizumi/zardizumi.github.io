@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="栾皓琛" />
+
+
+
+<meta name="description" content="基于express进行后台接口开发返回json格式的数据使用res.json(需要返回的数据),并基于mysql数据库进行操作1234567891011121314const express = require(&apos;express&apos;);const app = express();const db = ">
+<meta name="keywords" content="-- nodeJs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用nodeJs进行后台接口的开发">
+<meta property="og:url" content="https://zardizumi.github.io/2018/04/06/使用nodeJs进行后台接口的开发/index.html">
+<meta property="og:site_name" content="栾皓琛的个人博客">
+<meta property="og:description" content="基于express进行后台接口开发返回json格式的数据使用res.json(需要返回的数据),并基于mysql数据库进行操作1234567891011121314const express = require(&apos;express&apos;);const app = express();const db = require(&apos;./db&apos;)// allBooksapp.get(&apos;/allBooks&apos;,(req">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-18T15:44:36.862Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用nodeJs进行后台接口的开发">
+<meta name="twitter:description" content="基于express进行后台接口开发返回json格式的数据使用res.json(需要返回的数据),并基于mysql数据库进行操作1234567891011121314const express = require(&apos;express&apos;);const app = express();const db = require(&apos;./db&apos;)// allBooksapp.get(&apos;/allBooks&apos;,(req">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="栾皓琛的个人博客" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/ico.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>使用nodeJs进行后台接口的开发 | 栾皓琛的个人博客</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?5813ee6baecd0176df8eb6102c701f49";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.gif" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">栾皓琛</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">每天都是新一天</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="/1092751647@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/zardizumi" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">-- express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/">-- mongodb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodeJs/">-- nodeJs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">-- vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">-- webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redux/">redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://github.com/zardizumi">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://juejin.im/">掘金</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://www.csdn.net/">CSDN</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">栾皓琛</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.gif" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">栾皓琛</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">每天都是新一天</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="/1092751647@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/zardizumi" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-使用nodeJs进行后台接口的开发" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/04/06/使用nodeJs进行后台接口的开发/" class="article-date">
+      <time datetime="2018-04-06T14:46:43.000Z" itemprop="datePublished">2018-04-06</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      使用nodeJs进行后台接口的开发
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodeJs/">-- nodeJs</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="基于express进行后台接口开发"><a href="#基于express进行后台接口开发" class="headerlink" title="基于express进行后台接口开发"></a>基于express进行后台接口开发</h2><h3 id="返回json格式的数据"><a href="#返回json格式的数据" class="headerlink" title="返回json格式的数据"></a>返回json格式的数据</h3><p><strong>使用res.json(需要返回的数据),并基于mysql数据库进行操作</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"><span class="keyword">const</span> db = <span class="built_in">require</span>(<span class="string">'./db'</span>)</span><br><span class="line"><span class="comment">// allBooks</span></span><br><span class="line">app.get(<span class="string">'/allBooks'</span>,(req,res)=&gt;&#123;</span><br><span class="line">    <span class="keyword">let</span> sql = <span class="string">'select * from book'</span>;</span><br><span class="line">    db.base(sql,<span class="literal">null</span>,(result)=&gt;&#123;</span><br><span class="line">        res.json(result);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>,()=&gt;&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'running'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="jsonp形式"><a href="#jsonp形式" class="headerlink" title="jsonp形式"></a>jsonp形式</h3><p><strong>使用res.jsop(返回数据)，键名默认是callback</strong><br><strong>通过app.set(‘jsonp callback name’,键名)来设置其他的callback键名</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">'/allBooks'</span>, (req, res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> sql = <span class="string">'select * from book'</span>;</span><br><span class="line">    db.base(sql, <span class="literal">null</span>, (result) =&gt; &#123;</span><br><span class="line">        res.jsonp(result);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//使用 /allBooks?callback=foo进行调用</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="restful-api"><a href="#restful-api" class="headerlink" title="restful api"></a>restful api</h2><p><strong>restful接口使一种依据url来表述接口的接口格式，即一个url对应一种资源.</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">get http:localhost:<span class="number">3000</span>/books 获取所有书</span><br><span class="line">get http:localhost:<span class="number">3000</span>/books/book添加书</span><br><span class="line">post  http:localhost:<span class="number">3000</span>/books/book添加书</span><br><span class="line">get   http:localhost:<span class="number">3000</span>/books/book/<span class="number">1</span> 编辑一本书</span><br><span class="line">put   http:localhost:<span class="number">3000</span>/books/book 提交编辑书</span><br><span class="line"><span class="keyword">delete</span> http:localhost:<span class="number">3000</span>/books/book/<span class="number">2</span> 删除一本书</span><br></pre></td></tr></table></figure>
+<h3 id="使用express实现restful接口"><a href="#使用express实现restful接口" class="headerlink" title="使用express实现restful接口"></a>使用express实现restful接口</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">'/books'</span>,(req,res)=&gt;&#123;</span><br><span class="line">    <span class="keyword">let</span> sql = <span class="string">'select * from book'</span>;</span><br><span class="line">    db.base(sql,<span class="literal">null</span>,(result)=&gt;&#123;</span><br><span class="line">        res.json(result);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/books/book/:id'</span>,(req,res)=&gt;&#123;</span><br><span class="line">    <span class="keyword">let</span> param = req.params.id;</span><br><span class="line">    <span class="built_in">console</span>.log(param);</span><br><span class="line">    <span class="keyword">let</span> sql = <span class="string">'select * from book where id=?'</span>;</span><br><span class="line">    <span class="keyword">let</span> data = [param];</span><br><span class="line">    db.base(sql, data,(result)=&gt;&#123;</span><br><span class="line">        res.json(result[<span class="number">0</span>])</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line">app.listen(<span class="number">3000</span>,()=&gt;&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'running'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="服务器向别的服务器发请求"><a href="#服务器向别的服务器发请求" class="headerlink" title="服务器向别的服务器发请求"></a>服务器向别的服务器发请求</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> options = &#123;</span><br><span class="line">    protocol: <span class="string">'http:'</span>,</span><br><span class="line">    hostname: <span class="string">"www.weather.com.cn"</span>,</span><br><span class="line">    port: <span class="number">80</span>,</span><br><span class="line">    path: <span class="string">"/data/sk/"</span> + cityCode + <span class="string">".html"</span>,</span><br><span class="line">    method: <span class="string">'get'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> req = http.request(options, (res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> info = <span class="string">""</span>;</span><br><span class="line">    res.on(<span class="string">'data'</span>, (chunk) =&gt; &#123;</span><br><span class="line">        info += chunk</span><br><span class="line">    &#125;)</span><br><span class="line">    res.on(<span class="string">'end'</span>, () =&gt; &#123;</span><br><span class="line">        callback(<span class="built_in">JSON</span>.parse(info))</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br><span class="line">req.end();</span><br></pre></td></tr></table></figure>
+<h2 id="使用express实现restful-api"><a href="#使用express实现restful-api" class="headerlink" title="使用express实现restful api"></a>使用express实现restful api</h2><h3 id="设置express路由，根据不同的路由进行不同的操作"><a href="#设置express路由，根据不同的路由进行不同的操作" class="headerlink" title="设置express路由，根据不同的路由进行不同的操作"></a>设置express路由，根据不同的路由进行不同的操作</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//提供所有图书信息的restful api</span></span><br><span class="line">router.get(<span class="string">'/books'</span>,service.allBooks);</span><br><span class="line"></span><br><span class="line"><span class="comment">//编辑图书时根据id查询响应的信息</span></span><br><span class="line">router.get(<span class="string">'/books/book/:id'</span>,service.getBookById);</span><br><span class="line"></span><br><span class="line"><span class="comment">//提交编辑的数据</span></span><br><span class="line"></span><br><span class="line">router.put(<span class="string">'/books/book'</span>,service.editBook);</span><br><span class="line"></span><br><span class="line"><span class="comment">//添加图书信息</span></span><br><span class="line"></span><br><span class="line">router.post(<span class="string">'/books/book'</span>,service.addBook)</span><br><span class="line"></span><br><span class="line"><span class="comment">//删除图书信息</span></span><br><span class="line"></span><br><span class="line">router.delete(<span class="string">'/books/book/:id'</span>,service.deleteBook);</span><br><span class="line"></span><br><span class="line"><span class="comment">//查询天气</span></span><br><span class="line"></span><br><span class="line">router.get(<span class="string">'/weather/:cityCode'</span>,service.queryWeather)</span><br></pre></td></tr></table></figure>
+<h3 id="数据库使用mysql，使用node-mysql包-进行数据库操作"><a href="#数据库使用mysql，使用node-mysql包-进行数据库操作" class="headerlink" title="数据库使用mysql，使用node mysql包,进行数据库操作"></a>数据库使用mysql，使用node mysql包,进行数据库操作</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">    exports.allBooks = <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> sql = <span class="string">'select * from book'</span>;</span><br><span class="line">        db.base(sql,<span class="literal">null</span>,(result)=&gt;&#123;</span><br><span class="line">            res.json(result);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">exports.editBook = <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> info = req.body;</span><br><span class="line">    <span class="keyword">let</span> sql = <span class="string">'update book set name=?,author=?,category=?,description=? where id=?'</span>;</span><br><span class="line">    <span class="keyword">let</span> data = [info.name, info.author, info.category, info.description, info.id];</span><br><span class="line">    db.base(sql, data, (result) =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (result.affectedRows == <span class="number">1</span>) &#123;</span><br><span class="line">            res.json(&#123;</span><br><span class="line">                msg: <span class="string">"编辑成功"</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            res.json(&#123;</span><br><span class="line">                msg: <span class="string">"编辑失败"</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line">exports.addBook = <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> info = req.body;</span><br><span class="line">    <span class="keyword">let</span> sql = <span class="string">'insert into book set ?'</span>;</span><br><span class="line">    db.base(sql, info, (result) =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (result.affectedRows == <span class="number">1</span>) &#123;</span><br><span class="line">            res.json(&#123;</span><br><span class="line">                msg: <span class="string">"添加成功"</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            res.json(&#123;</span><br><span class="line">                msg: <span class="string">"添加失败"</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;;</span><br><span class="line">exports.deleteBook = <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> id = req.params.id;</span><br><span class="line">    <span class="keyword">let</span> sql = <span class="string">'delete from book where id=?'</span>;</span><br><span class="line">    <span class="keyword">let</span> data = [id];</span><br><span class="line">    db.base(sql,data,(result)=&gt;&#123;</span><br><span class="line">        <span class="keyword">if</span> (result.affectedRows == <span class="number">1</span>) &#123;</span><br><span class="line">            res.json(&#123;</span><br><span class="line">                msg: <span class="string">"删除成功"</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            res.json(&#123;</span><br><span class="line">                msg: <span class="string">"删除失败"</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;;</span><br><span class="line">exports.getBookById = <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> id = req.params.id;</span><br><span class="line">    <span class="keyword">let</span> sql = <span class="string">'select * from book where id=?'</span>;</span><br><span class="line">    db.base(sql, id, (result) =&gt; &#123;</span><br><span class="line">        res.json(result[<span class="number">0</span>]);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">exports.queryWeather = <span class="function">(<span class="params">req,res</span>) =&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> cityCode = req.params.cityCode;</span><br><span class="line">    weather.queryWeather(cityCode,(data)=&gt;&#123;</span><br><span class="line">        res.json(data);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="可以在页面中通过ajax调用接口"><a href="#可以在页面中通过ajax调用接口" class="headerlink" title="可以在页面中通过ajax调用接口"></a>可以在页面中通过ajax调用接口</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    type: <span class="string">'put'</span>,</span><br><span class="line">    url: <span class="string">'/books/book'</span>,</span><br><span class="line">    data: &#123;</span><br><span class="line">        id:that.form.id,</span><br><span class="line">        name: that.form.name,</span><br><span class="line">        author: that.form.author,</span><br><span class="line">        category: that.form.category,</span><br><span class="line">        description: that.form.description</span><br><span class="line">    &#125;,</span><br><span class="line">    success: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">        that.editseen = <span class="literal">false</span>; </span><br><span class="line">        $.ajax(&#123;</span><br><span class="line">            type: <span class="string">'get'</span>,</span><br><span class="line">            url: <span class="string">'/books'</span>,</span><br><span class="line">            dataType: <span class="string">'json'</span>,</span><br><span class="line">            success: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">                that.tableData = data;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="使用node-http-request进行接口的二次封装"><a href="#使用node-http-request进行接口的二次封装" class="headerlink" title="使用node http.request进行接口的二次封装"></a>使用node http.request进行接口的二次封装</h2><p><strong>如果我们直接请求其他域名或端口下的api会产生跨域，所以使用http.request通过服务器进行请求，在对该请求进行二次封装就可以调用其他域的接口了</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//通过node请求其他域</span></span><br><span class="line">    <span class="keyword">let</span> options = &#123;</span><br><span class="line">            protocol: <span class="string">'http:'</span>,</span><br><span class="line">            hostname: <span class="string">"www.weather.com.cn"</span>,</span><br><span class="line">            port: <span class="number">80</span>,</span><br><span class="line">            path: <span class="string">"/data/sk/"</span> + cityCode + <span class="string">".html"</span>,</span><br><span class="line">            method: <span class="string">'get'</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> req = http.request(options, (res) =&gt; &#123;</span><br><span class="line">            <span class="keyword">let</span> info = <span class="string">""</span>;</span><br><span class="line">            res.on(<span class="string">'data'</span>, (chunk) =&gt; &#123;</span><br><span class="line">                info += chunk</span><br><span class="line">            &#125;)</span><br><span class="line">            res.on(<span class="string">'end'</span>, () =&gt; &#123;</span><br><span class="line">                callback(<span class="built_in">JSON</span>.parse(info))</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;);</span><br><span class="line">        req.end(); </span><br><span class="line">    <span class="comment">//对该接口进行二次封装</span></span><br><span class="line"></span><br><span class="line">    router.get(<span class="string">'/weather/:cityCode'</span>,service.queryWeather)</span><br><span class="line"></span><br><span class="line">    exports.queryWeather = <span class="function">(<span class="params">req,res</span>) =&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> cityCode = req.params.cityCode;</span><br><span class="line">        weather.queryWeather(cityCode,(data)=&gt;&#123;</span><br><span class="line">            res.json(data);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="superagent"><a href="#superagent" class="headerlink" title="superagent"></a>superagent</h2>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/04/06/使用nodeJs进行后台接口的开发/">使用nodeJs进行后台接口的开发</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">栾皓琛</a></p>
+        <p><span>发布时间:</span>2018-04-06, 22:46:43</p>
+        <p><span>最后更新:</span>2018-04-18, 23:44:36</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/04/06/使用nodeJs进行后台接口的开发/" title="使用nodeJs进行后台接口的开发">https://zardizumi.github.io/2018/04/06/使用nodeJs进行后台接口的开发/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://zardizumi.github.io/2018/04/06/使用nodeJs进行后台接口的开发/　　作者: 栾皓琛" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/03/28/webpack从零开始/">
+                    webpack从零开始
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基于express进行后台接口开发"><span class="toc-number">1.</span> <span class="toc-text">基于express进行后台接口开发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#返回json格式的数据"><span class="toc-number">1.1.</span> <span class="toc-text">返回json格式的数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jsonp形式"><span class="toc-number">1.2.</span> <span class="toc-text">jsonp形式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#restful-api"><span class="toc-number">2.</span> <span class="toc-text">restful api</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用express实现restful接口"><span class="toc-number">2.1.</span> <span class="toc-text">使用express实现restful接口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#服务器向别的服务器发请求"><span class="toc-number">3.</span> <span class="toc-text">服务器向别的服务器发请求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用express实现restful-api"><span class="toc-number">4.</span> <span class="toc-text">使用express实现restful api</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#设置express路由，根据不同的路由进行不同的操作"><span class="toc-number">4.1.</span> <span class="toc-text">设置express路由，根据不同的路由进行不同的操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库使用mysql，使用node-mysql包-进行数据库操作"><span class="toc-number">4.2.</span> <span class="toc-text">数据库使用mysql，使用node mysql包,进行数据库操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可以在页面中通过ajax调用接口"><span class="toc-number">4.3.</span> <span class="toc-text">可以在页面中通过ajax调用接口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用node-http-request进行接口的二次封装"><span class="toc-number">5.</span> <span class="toc-text">使用node http.request进行接口的二次封装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#superagent"><span class="toc-number">6.</span> <span class="toc-text">superagent</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"使用nodeJs进行后台接口的开发　| 栾皓琛的个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+        <section class="youyan" id="comments">
+    <script>
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = 'http://v2.uyan.cc/code/uyan.js?uid=2149780';
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+    
+    <script> loadComment(); </script>
+
+    <div id="uyan_frame"></div>
+</section>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/03/28/webpack从零开始/" title="下一篇: webpack从零开始">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/04/06/使用nodeJs进行后台接口的开发/">使用nodeJs进行后台接口的开发</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/28/webpack从零开始/">webpack从零开始</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/16/mongoose基础应用/">mongoose基础应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/12/Nuxt.js/">Nuxt.js</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/06/express/">express</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/24/preview/Vue学习笔记/">preview/Vue学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/24/preview/toc_conf/">preview/toc_conf</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/24/preview/toc/style/makedownpad/">preview/toc/style/makedownpad</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/24/preview/toc/style/GitHub2/">preview/toc/style/GitHub2</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/24/preview/toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5/">preview/toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/24/preview/toc/style/GitHub/">preview/toc/style/GitHub</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/24/preview/toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e/">preview/toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/24/preview/toc/style/Clearness/">preview/toc/style/Clearness</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/24/preview/toc/style/Clearness Dark/">preview/toc/style/Clearness Dark</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/24/preview/toc/js/ztree_toc.min/">preview/toc/js/ztree_toc.min</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/24/preview/toc/js/ztree_toc/">preview/toc/js/ztree_toc</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/24/preview/toc/js/jquery.ztree.all-3.5.min/">preview/toc/js/jquery.ztree.all-3.5.min</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/24/preview/toc/js/jquery-1.4.4.min/">preview/toc/js/jquery-1.4.4.min</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/24/preview/toc/css/zTreeStyle/zTreeStyle/">preview/toc/css/zTreeStyle/zTreeStyle</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/24/preview/toc/css/demo/">preview/toc/css/demo</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/13/Redux/">Redux</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/29/MongoDB笔记/">MongoDB笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/23/函数式编程/">函数式编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/19/React构建工具和路由/">React构建工具和路由</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/11/React基础/">从零开始学习React</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/05/koa/">koa</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/19/python从零开始/">python从零开始</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/16/nodejs从零开始/">nodejs从零开始</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/10/Vue-router/">Vue-router</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/25/angular1/">Angular自学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/20/Vue之组件通信/">Vue之组件通信</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/12/vue虾米实战/">vue虾米实战</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/12/VueResource踩坑记/">VueResource踩坑记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/04/Vue学习笔记/">从零开始学习Vue</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/25/四款移动插件用法/">四款移动开发中的插件的用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/28/php自学/">PHP</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/20/事件委托/">事件委托</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/10/ES6学习笔记/">ES6学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/一些总结的小坑/">一些总结的小坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/10/require-js/">Require.js</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/20/gulp/">gulp</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/17/git/">git</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2018 栾皓琛
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
