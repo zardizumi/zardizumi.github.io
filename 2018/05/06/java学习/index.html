@@ -15,17 +15,18 @@
 
 
 
-<meta name="description" content="h1, h2, h3, h4, h5, h6, p, blockquote {     margin: 0;     padding: 0; } body {     font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;Hiragino Sans GB&q">
+<meta name="description" content="java学习static关键字类变量和类方法如果我们希望即使该类有很多的实例，但是某些数据在空间中只有一份，而不是每一个实例都有一份，就可以使用类变量和类方法。即所有该类的实例都拥有这些属性方法。当其中一个对象对静态属性进行修改会导致所有实例的该属性改变。使用static修饰的属性和方法在内存中存在于静态域，不同于堆和">
+<meta name="keywords" content="-- java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="栾皓琛的个人博客">
-<meta property="og:url" content="https://zardizumi.github.io/2018/02/24/preview/toc/style/Clearness/index.html">
+<meta property="og:title" content="java">
+<meta property="og:url" content="https://zardizumi.github.io/2018/05/06/java学习/index.html">
 <meta property="og:site_name" content="栾皓琛的个人博客">
-<meta property="og:description" content="h1, h2, h3, h4, h5, h6, p, blockquote {     margin: 0;     padding: 0; } body {     font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;Hiragino Sans GB&quot;, Arial, sans-serif;     font-size: 13px;     line-heigh">
+<meta property="og:description" content="java学习static关键字类变量和类方法如果我们希望即使该类有很多的实例，但是某些数据在空间中只有一份，而不是每一个实例都有一份，就可以使用类变量和类方法。即所有该类的实例都拥有这些属性方法。当其中一个对象对静态属性进行修改会导致所有实例的该属性改变。使用static修饰的属性和方法在内存中存在于静态域，不同于堆和栈空间类变量随类加载而加载，类变量早于实例变量。可以直接使用类调用。类方法也是随">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-24T15:04:33.893Z">
+<meta property="og:updated_time" content="2018-05-13T07:58:48.753Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="栾皓琛的个人博客">
-<meta name="twitter:description" content="h1, h2, h3, h4, h5, h6, p, blockquote {     margin: 0;     padding: 0; } body {     font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;Hiragino Sans GB&quot;, Arial, sans-serif;     font-size: 13px;     line-heigh">
+<meta name="twitter:title" content="java">
+<meta name="twitter:description" content="java学习static关键字类变量和类方法如果我们希望即使该类有很多的实例，但是某些数据在空间中只有一份，而不是每一个实例都有一份，就可以使用类变量和类方法。即所有该类的实例都拥有这些属性方法。当其中一个对象对静态属性进行修改会导致所有实例的该属性改变。使用static修饰的属性和方法在内存中存在于静态域，不同于堆和栈空间类变量随类加载而加载，类变量早于实例变量。可以直接使用类调用。类方法也是随">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -57,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>栾皓琛的个人博客</title>
+<title>java | 栾皓琛的个人博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -280,11 +281,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-preview/toc/style/Clearness" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-java学习" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/02/24/preview/toc/style/Clearness/" class="article-date">
-      <time datetime="2018-02-24T15:04:33.893Z" itemprop="datePublished">2018-02-24</time>
+      <a href="/2018/05/06/java学习/" class="article-date">
+      <time datetime="2018-05-06T07:54:14.000Z" itemprop="datePublished">2018-05-06</time>
 </a>
 
 
@@ -295,156 +296,86 @@
       <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      java
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">-- java</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-        h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote {
-    margin: 0;
-    padding: 0;
-}
-body {
-    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
-    font-size: 13px;
-    line-height: 18px;
-    color: #737373;
-    background-color: white;
-    margin: 10px 13px 10px 13px;
-}
-table {
-	margin: 10px 0 15px 0;
-	border-collapse: collapse;
-}
-td,th {	
-	border: 1px solid #ddd;
-	padding: 3px 10px;
-}
-th {
-	padding: 5px 10px;	
-}
-
-a {
-    color: #0069d6;
-}
-a:hover {
-    color: #0050a3;
-    text-decoration: none;
-}
-a img {
-    border: none;
-}
-p {
-    margin-bottom: 9px;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    color: #404040;
-    line-height: 36px;
-}
-h1 {
-    margin-bottom: 18px;
-    font-size: 30px;
-}
-h2 {
-    font-size: 24px;
-}
-h3 {
-    font-size: 18px;
-}
-h4 {
-    font-size: 16px;
-}
-h5 {
-    font-size: 14px;
-}
-h6 {
-    font-size: 13px;
-}
-hr {
-    margin: 0 0 19px;
-    border: 0;
-    border-bottom: 1px solid #ccc;
-}
-blockquote {
-    padding: 13px 13px 21px 15px;
-    margin-bottom: 18px;
-    font-family:georgia,serif;
-    font-style: italic;
-}
-blockquote:before {
-    content:"\201C";
-    font-size:40px;
-    margin-left:-10px;
-    font-family:georgia,serif;
-    color:#eee;
-}
-blockquote p {
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 18px;
-    margin-bottom: 0;
-    font-style: italic;
-}
-code, pre {
-    font-family: Monaco, Andale Mono, Courier New, monospace;
-}
-code {
-    background-color: #fee9cc;
-    color: rgba(0, 0, 0, 0.75);
-    padding: 1px 3px;
-    font-size: 12px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-}
-pre {
-    display: block;
-    padding: 14px;
-    margin: 0 0 18px;
-    line-height: 16px;
-    font-size: 11px;
-    border: 1px solid #d9d9d9;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-}
-pre code {
-    background-color: #fff;
-    color:#737373;
-    font-size: 11px;
-    padding: 0;
-}
-sup {
-    font-size: 0.83em;
-    vertical-align: super;
-    line-height: 0;
-}
-* {
-	-webkit-print-color-adjust: exact;
-}
-@media screen and (min-width: 914px) {
-    body {
-        width: 854px;
-        margin:10px auto;
+        <h1 id="java学习"><a href="#java学习" class="headerlink" title="java学习"></a>java学习</h1><h2 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h2><p>类变量和类方法<br>如果我们希望即使该类有很多的实例，但是某些数据在空间中只有一份，而不是每一个实例都有一份，就可以使用类变量和类方法。<br>即所有该类的实例都拥有这些属性方法。<br>当其中一个对象对静态属性进行修改会导致所有实例的该属性改变。<br>使用static修饰的属性和方法在内存中存在于静态域，不同于堆和栈空间<br>类变量随类加载而加载，类变量早于实例变量。可以直接使用类调用。<br>类方法也是随类加载而加载，可以直接通过类来调用。<br>静态方法只能调用本类的静态属性和其他静态方法。因为对象加载晚于类加载，所以掉不了非静态的<br>非静态方法可以调用静态方法和静态属性<br>静态结构出生早于非静态结构，同时被回收也晚于非静态结构。<br>在静态方法中不能使用this和super，因为此时对象还没有出现。<br><strong>static 可以用来修饰属性，方法，代码块，初始化块，内部类</strong></p>
+<pre><code>class SportMan {
+    String name ;
+    int age;
+    static String nation;
+    public SportMan(String name,int age){
+        this.name = name;
+        this.age = age;
     }
+    @Override
+    public String toString() {
+        return &quot;SportMan [name=&quot; + name + &quot;, age=&quot; + age + &quot;, nation=&quot; + nation + &quot;]&quot;;
+    }    
 }
-@media print {
-	body,code,pre code,h1,h2,h3,h4,h5,h6 {
-		color: black;
-	}
-	table, pre {
-		page-break-inside: avoid;
-	}
+</code></pre><h2 id="单例设计模式"><a href="#单例设计模式" class="headerlink" title="单例设计模式"></a>单例设计模式</h2><p><strong>解决的问题,是的一个类只能创建一个对象</strong><br></p>
+<ol>
+<li>私有化构造器,使得在类的外部不能调用构造器.<br></li>
+<li>在类的内部创一个类的实例.<br></li>
+<li>私有化此实例,并通过公共方法来返回<br></li>
+<li><p>通过该类调用此方法,所以将此方法设置为static,并将返回的实例设置为static<br><br>##饿汉式<br> package singleton;</p>
+<p> public class Test_1 {</p>
+<pre><code>public static void main(String[] args) {
+    Singleton s1  = Singleton.getInstance();
+    Singleton s2  = Singleton.getInstance();
+    System.out.println(s1==s2);
+
 }
+</code></pre><p> }</p>
+<p> class Singleton{</p>
+<pre><code>private Singleton(){}
+private static Singleton instance = new Singleton();
+static Singleton getInstance(){
+    return instance;
+}
+</code></pre><p> }</p>
+</li>
+</ol>
+<h2 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h2><ul>
+<li><p>  class Singleton1{</p>
+<pre><code>private Singleton1(){}
+private static Singleton1 instance = null;
+public static Singleton1 getInstance(){
+    if(instance==null){
+        instance = new Singleton1();
+    }
+    return instance;
+}
+</code></pre><p>  }</p>
+</li>
+</ul>
+<h2 id="饿汉和懒汉的区别"><a href="#饿汉和懒汉的区别" class="headerlink" title="饿汉和懒汉的区别"></a>饿汉和懒汉的区别</h2><ol>
+<li>饿汉一开始就创建好了.</li>
+<li>懒汉式先不创建,只有调get方法才去创建,可能存在线程安全问题.</li>
+</ol>
+
       
     </div>
     
@@ -452,13 +383,13 @@ sup {
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/02/24/preview/toc/style/Clearness/"></a></p>
+        <p><span>本文标题:</span><a href="/2018/05/06/java学习/">java</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">栾皓琛</a></p>
-        <p><span>发布时间:</span>2018-02-24, 23:04:33</p>
-        <p><span>最后更新:</span>2018-02-24, 23:04:33</p>
+        <p><span>发布时间:</span>2018-05-06, 15:54:14</p>
+        <p><span>最后更新:</span>2018-05-13, 15:58:48</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/02/24/preview/toc/style/Clearness/" title="">https://zardizumi.github.io/2018/02/24/preview/toc/style/Clearness/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://zardizumi.github.io/2018/02/24/preview/toc/style/Clearness/　　作者: 栾皓琛" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/05/06/java学习/" title="java">https://zardizumi.github.io/2018/05/06/java学习/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://zardizumi.github.io/2018/05/06/java学习/　　作者: 栾皓琛" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -470,16 +401,10 @@ sup {
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/02/24/preview/toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e/">
-                    
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/02/24/preview/toc/style/Clearness Dark/">
-                    
+                <a href="/2018/04/06/使用nodeJs进行后台接口的开发/">
+                    使用nodeJs进行后台接口的开发
                 </a>
             </div>
         
@@ -491,7 +416,7 @@ sup {
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#java学习"><span class="toc-number">1.</span> <span class="toc-text">java学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#static关键字"><span class="toc-number">1.1.</span> <span class="toc-text">static关键字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单例设计模式"><span class="toc-number">1.2.</span> <span class="toc-text">单例设计模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#懒汉式"><span class="toc-number">1.3.</span> <span class="toc-text">懒汉式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#饿汉和懒汉的区别"><span class="toc-number">1.4.</span> <span class="toc-text">饿汉和懒汉的区别</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -527,7 +452,7 @@ sup {
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"　| 栾皓琛的个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"java　| 栾皓琛的个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -561,15 +486,13 @@ sup {
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/02/24/preview/toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e/" title="上一篇: ">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/02/24/preview/toc/style/Clearness Dark/" title="下一篇: ">
+            <a href="/2018/04/06/使用nodeJs进行后台接口的开发/" title="下一篇: 使用nodeJs进行后台接口的开发">
                 <i class="fa fa-angle-right"></i>
             </a>
         
